@@ -1,6 +1,5 @@
 #include <cstdlib>
 #include <iostream>
-using namespace std;
 
 class my_string
 {
@@ -10,9 +9,9 @@ public:
 
   my_string()
   {
-    len = 5; // "Empty" length
-    str = new char[len + 1];
-    strcpy(str, "Empty");
+    len = 0;
+    str = new char[1];
+    *str = '\0';
   }
 
   my_string(const char *value)
@@ -40,7 +39,7 @@ public:
     *dest = '\0';
   }
 
-  void print() { cout << str << endl; }
+  void print() { std::cout << str << std::endl; }
 
   void append(const char *value)
   {
@@ -74,7 +73,7 @@ public:
       return str[pos];
     }
 
-    cerr << "Out of bounds index";
+    std::cerr << "Out of bounds index";
     exit(1);
   }
 
@@ -227,6 +226,68 @@ public:
     return -1;
   }
 
+  void replace(int start, int num_chars, my_string src_str)
+  {
+    if (!start || start > len)
+    {
+      return;
+    }
+    const char *src = src_str.str;
+    int new_len = src_str.len + len - num_chars;
+    char *new_str = new char[new_len + 1];
+    for (int i = 0; i < len; i++)
+    {
+      if (i != start)
+      {
+        new_str[i] = str[i];
+      }
+      else
+      {
+        for (int j = 0; j < num_chars; j++)
+        {
+          new_str[start + j] = src[j];
+        }
+      }
+    }
+    delete[] str;
+    str = new_str;
+  }
+
+  bool empty() { return (*str != '\0' && len != 0) ? false : true; }
+
+  char pop_back()
+  {
+    char deleted = str[len - 1];
+    char *new_str = new char[len];
+    for (int i = 0; i < len - 1; i++)
+    {
+      new_str[i] = str[i];
+    }
+    new_str[--len] = '\0';
+    delete[] str;
+    str = new_str;
+    return deleted;
+  }
+
+  void push_back(my_string src)
+  {
+    char deleted = str[len + 1];
+    char *new_str = new char[len];
+    for (int i = 0; i < len; i++)
+    {
+      new_str[i] = str[i];
+    }
+    int new_len = len + src.len;
+    for (int i = len; i < new_len; i++)
+    {
+      new_str[i] = src.str[i - len];
+    }
+    new_str[new_len] = '\0';
+    delete[] str;
+    str = new_str;
+    len = new_len;
+  }
+
   ~my_string() { delete[] str; }
 };
 
@@ -235,18 +296,20 @@ int main()
   my_string str;
   str.print();
 
+  std::cout << str.empty() << std::endl;
+
   my_string str2("aabb");
   str2.print();
-  cout << str2.len << endl;
+  std::cout << str2.len << std::endl;
 
   str2.append("cc");
   str2.print();
 
-  cout << str.compare(str2) << endl;
+  std::cout << str.compare(str2) << std::endl;
 
-  cout << str2.at(2) << endl;
+  std::cout << str2.at(2) << std::endl;
 
-  cout << str.back() << endl;
+  std::cout << str.back() << std::endl;
 
   str.clear();
   str.print();
@@ -260,7 +323,14 @@ int main()
   str2 = str.substr(2, 2);
   str2.print();
 
-  cout << str.rfind(str2) << endl;
+  std::cout << str.rfind(str2) << std::endl;
+  str.replace(1, 1, str2);
+  str.print();
 
+  str.pop_back();
+  str.print();
+
+  str.push_back(str2);
+  str.print();
   return 0;
 }

@@ -336,5 +336,39 @@ public:
     delete[] str;
     str = new_str;
   }
+
+  void insert(int start, my_string src_str)
+  {
+    if (!start || start > len)
+    {
+      return;
+    }
+    const char *src = src_str.str;
+    int new_len = src_str.len + len;
+    char *new_str = new char[new_len + 1];
+    for (int i = 0; i < new_len; i++)
+    {
+      if (i < start)
+      {
+        new_str[i] = str[i];
+      }
+      else if (i == start)
+      {
+        for (int j = 0; j < src_str.len; j++, i++)
+        {
+          new_str[i] = src[j];
+        }
+        new_str[i] = str[i - src_str.len];
+      }
+      else
+      {
+        new_str[i] = str[i - src_str.len];
+      }
+    }
+    new_str[new_len] = '\0';
+    delete[] str;
+    str = new_str;
+  }
+
   ~my_string() { delete[] str; } // деструктор класса
 };

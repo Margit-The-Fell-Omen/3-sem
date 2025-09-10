@@ -46,5 +46,7 @@ int main()
   str.print();
   str.erase(1, 2);
   str.print();
+  str.insert(2, str2);
+  str.print();
   return 0;
 }

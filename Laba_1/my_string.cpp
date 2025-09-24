@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-// ------ Конструкторы, деструктор класса my_string ------
+// ------ Конструкторы, операторы и деструктор класса my_string ------
 
 my_string::my_string()                                  // конструктор без параметров
 {
@@ -309,7 +309,7 @@ void my_string::resize(int new_size, const char* fill_str)  // функция и
     len = new_size;
   }
   else
-  { // new_size > len - увеличение размера с UTF-8 строкой
+  {
     int chars_to_add = new_size - len;
     
     if (!fill_str || fill_str[0] == '\0')
@@ -317,7 +317,6 @@ void my_string::resize(int new_size, const char* fill_str)  // функция и
       fill_str = " ";
     }
     
-    // Получаем информацию о fill строке
     int fill_char_len = get_char_count(fill_str);
     int fill_byte_len = strlen(fill_str);
     
@@ -330,16 +329,13 @@ void my_string::resize(int new_size, const char* fill_str)  // функция и
     
     int old_byte_len = strlen(str);
     
-    // Вычисляем сколько раз нужно повторить fill_str
-    int repeat_count = (chars_to_add + fill_char_len - 1) / fill_char_len; // округление вверх
+    int repeat_count = (chars_to_add + fill_char_len - 1) / fill_char_len;
     int new_byte_len = old_byte_len + (repeat_count * fill_byte_len);
     
     char *new_str = new char[new_byte_len + 1];
     
-    // Копируем оригинальную строку
     memcpy(new_str, str, old_byte_len);
     
-    // Добавляем fill строку нужное количество раз
     int current_byte_pos = old_byte_len;
     int chars_added = 0;
     
@@ -467,7 +463,6 @@ void my_string::erase(int start, int num_chars)                     // функ�
   if (start < 0 || start >= len || num_chars <= 0) return;
   if (start + num_chars > len) num_chars = len - start;
 
-  // Find exact byte positions for UTF-8 characters
   int byte_start = get_byte_pos_by_char_pos(start);
   int byte_end = get_byte_pos_by_char_pos(start + num_chars);
   
@@ -477,13 +472,11 @@ void my_string::erase(int start, int num_chars)                     // функ�
 
   char *new_str = new char[new_byte_len + 1];
 
-  // Copy part before the deletion
   if (byte_start > 0)
   {
     memcpy(new_str, str, byte_start);
   }
 
-  // Copy part after the deletion
   if (byte_end < old_byte_len)
   {
     memcpy(new_str + byte_start, str + byte_end, old_byte_len - byte_end);
@@ -508,11 +501,8 @@ void my_string::insert(int start, my_string src_str)                // функ�
 
   char *new_str = new char[new_byte_len + 1];
 
-  // Копируем часть до вставки
   memcpy(new_str, str, byte_pos);
-  // Копируем вставляемую строку
   memcpy(new_str + byte_pos, src_str.str, src_byte_len);
-  // Копируем остаток старой строки
   memcpy(new_str + byte_pos + src_byte_len, str + byte_pos,
          old_byte_len - byte_pos + 1);
 
@@ -526,6 +516,7 @@ void my_string::insert(int start, my_string src_str)                // функ�
 void menu()
 {
   my_string s("тест");
+  my_string s2("тест2");
 
   int choice;
   do
@@ -536,6 +527,10 @@ void menu()
     std::cout << "\"\n";
     std::cout << "Длина (в символах): " << s.length() << "\n";
     std::cout << "Длина (в байтах): " << (s.byte_length()) << "\n";
+
+    std::cout << "Текущая строка 2: \"";
+    s2.print();
+    std::cout << "\"\n";
 
     std::cout << "\nВыберите опцию:\n";
     std::cout << " 1. Присвоить из C-строки\n";
@@ -592,7 +587,11 @@ void menu()
       char buf[1024];
       std::cin.getline(buf, 1024);
       my_string temp(buf);
+      s2 = s;
       s.push_back(temp);
+      temp = s;
+      s = s2;
+      s2 = temp;
       break;
     }
     case 4:

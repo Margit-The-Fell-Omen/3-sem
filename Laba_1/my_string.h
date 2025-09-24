@@ -4,7 +4,7 @@
 class my_string   // класс строковых переменных
 {
   char *str;      // динамический массив символов (байтов)
-  int len;        // длина строки в СИМВОЛАХ (не в байтах)
+  int len;        // длина строки в символах (не в байтах)
 
 public:
   my_string();                                      // конструктор без параметров
@@ -28,9 +28,8 @@ public:
   int find(my_string goal_str);                     // функция прямого поиска в строке
   void insert(int start,
               my_string src_string);                // функция записи подстроки в строку
-  my_string pop_back();                             // функция удаления последнего СИМВОЛА строки
-  void push_back(
-      my_string src);                               // функция записи строки в конец строки
+  my_string pop_back();                             // функция удаления последнего символа строки
+  void push_back(my_string src);                    // функция записи строки в конец строки
   void replace(int start, int num_chars,
                my_string src_str);                  // функция замены подстроки строкой
   void resize(int new_size,

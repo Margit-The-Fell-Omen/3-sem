@@ -1,0 +1,4 @@
+/home/tim/3sem/Laba_2/build/CMakeFiles/my_string.dir
+/home/tim/3sem/Laba_2/build/CMakeFiles/Laba_2.dir
+/home/tim/3sem/Laba_2/build/CMakeFiles/edit_cache.dir
+/home/tim/3sem/Laba_2/build/CMakeFiles/rebuild_cache.dir

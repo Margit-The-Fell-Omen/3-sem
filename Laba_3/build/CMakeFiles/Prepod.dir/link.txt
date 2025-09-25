@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPrepod.a CMakeFiles/Prepod.dir/Prepod.cpp.o
+/usr/bin/ranlib libPrepod.a

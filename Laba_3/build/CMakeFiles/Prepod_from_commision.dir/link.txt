@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPrepod_from_commision.a CMakeFiles/Prepod_from_commision.dir/Prepod_from_commision.cpp.o
+/usr/bin/ranlib libPrepod_from_commision.a

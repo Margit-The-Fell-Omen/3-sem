@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMember_of_commision.a CMakeFiles/Member_of_commision.dir/Member_of_commision.cpp.o
+/usr/bin/ranlib libMember_of_commision.a

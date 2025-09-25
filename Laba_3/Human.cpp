@@ -9,19 +9,23 @@ Human::Human()
   this->birthday = "Unknown";
 }
 
-Human::Human(std::string name, std::string surname, std::string birthday) 
+Human::Human(std::string name, std::string surname, std::string birthday)
 {
   Human::set("name", name);
   Human::set("surname", surname);
   Human::set("birthday", birthday);
 }
 
-Human::Human(const Human &other) 
+Human::Human(const Human &other)
 {
-
+  this->name = other.get("name");
+  this->surname = other.get("surname");
+  this->birthday = other.get("birthday");
 }
 
-std::string Human::get(std::string param)
+Human::~Human() {}
+
+std::string Human::get(std::string param) const
 {
   if (param == "name")
   {
@@ -64,13 +68,13 @@ void Human::set(std::string param, std::string value)
   }
 }
 
-Human &Human::operator=(const Human &other)         // перегрузка оператора присваивания
+Human &Human::operator=(const Human &other) // перегрузка оператора присваивания
 {
-  if (this != &other) 
+  if (this != &other)
   {
-    this->name = other.name;
-    this->surname = other.surname;
-    this->birthday = other.birthday;
+    this->name = other.get("name");
+    this->surname = other.get("surname");
+    this->birthday = other.get("birthday");
   }
   return *this;
 }
@@ -88,11 +92,13 @@ std::istream &operator>>(std::istream &is,
 {
   std::cout
       << "Формат ввода: (имя фамилия [дата рождения в формате ДД.ММ.ГГГГ])";
-  std::string name;  
-  std::string surname;  
+  std::string name;
+  std::string surname;
   std::string birthday;
   is >> name >> surname >> birthday;
-  s = Human(name, surname, birthday);
+  s.set("name", name);
+  s.set("surname", surname);
+  s.set("birthday", birthday);
 
   return is;
 }

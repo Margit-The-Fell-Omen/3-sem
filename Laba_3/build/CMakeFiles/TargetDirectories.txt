@@ -1,7 +1,7 @@
-I:/3-sem/Laba_3/build/CMakeFiles/Human.dir
-I:/3-sem/Laba_3/build/CMakeFiles/Prepod_from_commision.dir
-I:/3-sem/Laba_3/build/CMakeFiles/Member_of_commision.dir
-I:/3-sem/Laba_3/build/CMakeFiles/Prepod.dir
-I:/3-sem/Laba_3/build/CMakeFiles/Laba_3.exe.dir
-I:/3-sem/Laba_3/build/CMakeFiles/ALL_BUILD.dir
-I:/3-sem/Laba_3/build/CMakeFiles/ZERO_CHECK.dir
+/home/tim/3sem/Laba_3/build/CMakeFiles/Human.dir
+/home/tim/3sem/Laba_3/build/CMakeFiles/Prepod_from_commision.dir
+/home/tim/3sem/Laba_3/build/CMakeFiles/Member_of_commision.dir
+/home/tim/3sem/Laba_3/build/CMakeFiles/Prepod.dir
+/home/tim/3sem/Laba_3/build/CMakeFiles/Laba_3.dir
+/home/tim/3sem/Laba_3/build/CMakeFiles/edit_cache.dir
+/home/tim/3sem/Laba_3/build/CMakeFiles/rebuild_cache.dir

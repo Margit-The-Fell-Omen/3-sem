@@ -3,6 +3,9 @@
 
 CMakeFiles/Laba_3.dir/main.cpp.o: /home/tim/3sem/Laba_3/main.cpp \
   /home/tim/3sem/Laba_3/Human.h \
+  /home/tim/3sem/Laba_3/Member_of_commision.h \
+  /home/tim/3sem/Laba_3/Prepod.h \
+  /home/tim/3sem/Laba_3/Prepod_from_commision.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -118,12 +121,15 @@ CMakeFiles/Laba_3.dir/main.cpp.o: /home/tim/3sem/Laba_3/main.cpp \
   /usr/include/c++/15.2.1/bits/requires_hosted.h \
   /usr/include/c++/15.2.1/bits/std_abs.h \
   /usr/include/c++/15.2.1/bits/stl_algobase.h \
+  /usr/include/c++/15.2.1/bits/stl_bvector.h \
   /usr/include/c++/15.2.1/bits/stl_construct.h \
   /usr/include/c++/15.2.1/bits/stl_function.h \
   /usr/include/c++/15.2.1/bits/stl_iterator.h \
   /usr/include/c++/15.2.1/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/15.2.1/bits/stl_iterator_base_types.h \
   /usr/include/c++/15.2.1/bits/stl_pair.h \
+  /usr/include/c++/15.2.1/bits/stl_uninitialized.h \
+  /usr/include/c++/15.2.1/bits/stl_vector.h \
   /usr/include/c++/15.2.1/bits/streambuf.tcc \
   /usr/include/c++/15.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/15.2.1/bits/string_view.tcc \
@@ -131,6 +137,7 @@ CMakeFiles/Laba_3.dir/main.cpp.o: /home/tim/3sem/Laba_3/main.cpp \
   /usr/include/c++/15.2.1/bits/uses_allocator.h \
   /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
   /usr/include/c++/15.2.1/bits/utility.h \
+  /usr/include/c++/15.2.1/bits/vector.tcc \
   /usr/include/c++/15.2.1/bits/version.h \
   /usr/include/c++/15.2.1/cctype \
   /usr/include/c++/15.2.1/cerrno \
@@ -165,6 +172,7 @@ CMakeFiles/Laba_3.dir/main.cpp.o: /home/tim/3sem/Laba_3/main.cpp \
   /usr/include/c++/15.2.1/tuple \
   /usr/include/c++/15.2.1/type_traits \
   /usr/include/c++/15.2.1/typeinfo \
+  /usr/include/c++/15.2.1/vector \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/atomic_word.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
   /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -257,8 +265,6 @@ libHuman.a:
 
 /usr/lib/crtn.o:
 
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h:
-
 /usr/include/sys/single_threaded.h:
 
 /usr/include/sys/select.h:
@@ -274,8 +280,6 @@ libHuman.a:
 /usr/include/linux/sched/types.h:
 
 /usr/include/linux/posix_types.h:
-
-/usr/include/linux/errno.h:
 
 /usr/include/features-time64.h:
 
@@ -307,6 +311,8 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 
 /usr/include/c++/15.2.1/string:
 
+/usr/include/c++/15.2.1/vector:
+
 /usr/include/c++/15.2.1/stdexcept:
 
 /usr/include/c++/15.2.1/iostream:
@@ -320,10 +326,6 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 /usr/include/c++/15.2.1/ext/numeric_traits.h:
 
 /usr/include/c++/15.2.1/ext/alloc_traits.h:
-
-/usr/include/errno.h:
-
-/usr/include/c++/15.2.1/exception:
 
 /usr/include/c++/15.2.1/new:
 
@@ -345,15 +347,29 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/version.h:
 
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h:
+
+/usr/include/c++/15.2.1/bits/vector.tcc:
+
 /usr/include/c++/15.2.1/bits/utility.h:
 
 /usr/include/c++/15.2.1/bits/uses_allocator_args.h:
 
 /usr/include/c++/15.2.1/bits/uses_allocator.h:
 
-/usr/include/bits/types/struct_FILE.h:
+/usr/include/locale.h:
 
-/usr/include/asm/types.h:
+/usr/include/c++/15.2.1/bits/string_view.tcc:
+
+/usr/include/c++/15.2.1/bits/streambuf_iterator.h:
+
+/usr/include/errno.h:
+
+/usr/include/c++/15.2.1/exception:
+
+/usr/include/c++/15.2.1/bits/stl_vector.h:
+
+/usr/include/c++/15.2.1/bits/stl_uninitialized.h:
 
 /usr/include/c++/15.2.1/tuple:
 
@@ -405,15 +421,9 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 
 /usr/include/bits/select.h:
 
-/usr/include/asm/posix_types.h:
+/usr/include/gnu/stubs.h:
 
-/usr/include/asm/posix_types_64.h:
-
-/usr/include/c++/15.2.1/bits/allocator.h:
-
-/usr/include/bits/types/locale_t.h:
-
-/usr/include/asm-generic/int-ll64.h:
+/usr/include/bits/pthreadtypes-arch.h:
 
 /usr/include/bits/floatn.h:
 
@@ -433,10 +443,6 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 
 /usr/include/asm-generic/errno.h:
 
-/usr/include/asm-generic/types.h:
-
-/usr/include/asm-generic/errno-base.h:
-
 /usr/include/bits/types/__fpos_t.h:
 
 /usr/include/bits/types/clock_t.h:
@@ -449,23 +455,51 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 
 /usr/include/bits/pthread_stack_min-dynamic.h:
 
-/usr/include/bits/struct_rwlock.h:
+/usr/include/asm/types.h:
 
-/usr/include/bits/types/struct_itimerspec.h:
+/usr/include/bits/types/struct_FILE.h:
 
-/usr/include/c++/15.2.1/streambuf:
+/usr/include/asm-generic/errno-base.h:
 
-/usr/include/c++/15.2.1/bits/functexcept.h:
+/usr/include/asm-generic/types.h:
 
-/usr/include/bits/stdio_lim.h:
+/usr/include/linux/errno.h:
 
-/usr/include/bits/time.h:
+/home/tim/3sem/Laba_3/Prepod.h:
 
-/usr/include/bits/types/__mbstate_t.h:
+/usr/include/bits/struct_mutex.h:
+
+/home/tim/3sem/Laba_3/Member_of_commision.h:
 
 /usr/include/c++/15.2.1/bits/basic_string.h:
 
 /usr/include/c++/15.2.1/bits/stl_iterator.h:
+
+/home/tim/3sem/Laba_3/Prepod_from_commision.h:
+
+/usr/include/asm/posix_types.h:
+
+/usr/include/asm/posix_types_64.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/types/__mbstate_t.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/c++/15.2.1/bits/allocator.h:
+
+/usr/include/bits/types/locale_t.h:
+
+/usr/include/asm-generic/int-ll64.h:
+
+/usr/include/wctype.h:
+
+/usr/include/bits/timex.h:
+
+/usr/include/bits/errno.h:
+
+/usr/include/bits/locale.h:
 
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h:
 
@@ -474,10 +508,6 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 /usr/include/bits/time64.h:
 
 /usr/include/bits/byteswap.h:
-
-/usr/include/c++/15.2.1/bits/streambuf_iterator.h:
-
-/usr/include/bits/struct_mutex.h:
 
 /usr/lib/crti.o:
 
@@ -497,14 +527,6 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 
 /usr/include/c++/15.2.1/bits/basic_string.tcc:
 
-/usr/include/bits/locale.h:
-
-/usr/include/wctype.h:
-
-/usr/include/bits/timex.h:
-
-/usr/include/bits/errno.h:
-
 /usr/include/bits/types/mbstate_t.h:
 
 /usr/include/bits/floatn-common.h:
@@ -513,9 +535,13 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 
 /usr/include/bits/libc-header-start.h:
 
-/usr/include/gnu/stubs.h:
+/usr/include/bits/struct_rwlock.h:
 
-/usr/include/bits/pthreadtypes-arch.h:
+/usr/include/bits/types/struct_itimerspec.h:
+
+/usr/include/c++/15.2.1/streambuf:
+
+/usr/include/c++/15.2.1/bits/functexcept.h:
 
 /usr/include/bits/types/struct_sched_param.h:
 
@@ -554,6 +580,8 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 /usr/include/c++/15.2.1/cctype:
 
 /usr/include/c++/15.2.1/bits/hash_bytes.h:
+
+/usr/include/c++/15.2.1/bits/stl_bvector.h:
 
 /usr/include/c++/15.2.1/bits/locale_facets.tcc:
 
@@ -668,7 +696,3 @@ CMakeFiles/Laba_3.dir/main.cpp.o:
 /usr/include/bits/waitflags.h:
 
 /usr/include/c++/15.2.1/bits/stl_pair.h:
-
-/usr/include/locale.h:
-
-/usr/include/c++/15.2.1/bits/string_view.tcc:

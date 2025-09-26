@@ -1,116 +1,209 @@
-#include <iostream>
-#include <vector>
 #include "Human.h"
 #include "Member_of_commision.h"
 #include "Prepod.h"
 #include "Prepod_from_commision.h"
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-int main() {
+int main()
+{
 
-    vector<Human> humans;
-    vector<Member_of_commision> members;
-    vector<Prepod> prepods;
-    vector<Prepod_from_commision> prepod_members;
+  vector<Human> humans;
+  vector<Member_of_commision> members;
+  vector<Prepod> prepods;
+  vector<Prepod_from_commision> prepod_members;
 
-    int choice;
-    do {
-        cout << "\nМеню:\n";
-        cout << "1 - Добавить Human\n";
-        cout << "2 - Добавить Member_of_commision\n";
-        cout << "3 - Добавить Prepod\n";
-        cout << "4 - Добавить Prepod_from_commision\n";
-        cout << "5 - Показать всех\n";
-        cout << "6 - Изменить поле\n";
-        cout << "0 - Выход\n";
-        cout << "Ваш выбор: ";
-        cin >> choice;
+  int choice;
+  do
+  {
+    cout << "\nМеню:\n";
+    cout << "1 - Добавить Human\n";
+    cout << "2 - Добавить Member_of_commision\n";
+    cout << "3 - Добавить Prepod\n";
+    cout << "4 - Добавить Prepod_from_commision\n";
+    cout << "5 - Показать всех\n";
+    cout << "6 - Изменить поле\n";
+    cout << "0 - Выход\n";
+    cout << "Ваш выбор: ";
 
-        if (choice == 1) {
-            Human h;
-            cout << "Введите: name surname birthday\n";
-            cin >> h;
-            humans.push_back(h);
+    cin >> choice;
+
+    if (!std::cin)
+    {
+      std::cin.clear();
+      std::cin.ignore(10000, '\n');
+      continue;
+    }
+
+    std::cin.ignore(10000, '\n');
+    
+    if (choice == 1)
+    {
+      Human h;
+      cout << "Введите: name surname birthday\n";
+      cin >> h;
+      humans.push_back(h);
+    }
+    else if (choice == 2)
+    {
+      Member_of_commision m;
+      cout << "Введите: name surname birthday commision_name biography\n";
+      cin >> m;
+      members.push_back(m);
+    }
+    else if (choice == 3)
+    {
+      Prepod p;
+      cout << "Введите: name surname birthday degree position works\n";
+      cin >> p;
+      prepods.push_back(p);
+    }
+    else if (choice == 4)
+    {
+      Prepod_from_commision pc;
+      cout << "Введите: name surname birthday degree position works "
+              "commision_name biography commision_works\n";
+      cin >> pc;
+      prepod_members.push_back(pc);
+    }
+    else if (choice == 5)
+    {
+      cout << "\n=== Humans ===\n";
+      if (!humans.empty())
+      {
+        humans[0].printHeader(cout);
+        cout << endl;
+        for (const auto &h : humans)
+          cout << h << endl;
+      }
+      else
+      {
+        cout << "Список Human пуст.\n";
+      }
+
+      cout << "\n=== Members of commission ===\n";
+      if (!members.empty())
+      {
+        members[0].printHeader(cout);
+        for (const auto &m : members)
+          cout << m << endl;
+      }
+      else
+      {
+        cout << "Список Members of commission пуст.\n";
+      }
+
+      cout << "\n=== Prepods ===\n";
+      if (!prepods.empty())
+      {
+        prepods[0].printHeader(cout);
+        for (const auto &p : prepods)
+          cout << p << endl;
+      }
+      else
+      {
+        cout << "Список Prepods пуст.\n";
+      }
+
+      cout << "\n=== Prepod_from_commision ===\n";
+      if (!prepod_members.empty())
+      {
+        prepod_members[0].printHeader(cout);
+        for (const auto &pc : prepod_members)
+          cout << pc << endl;
+      }
+      else
+      {
+        cout << "Список Prepod_from_commision пуст.\n";
+      }
+    }
+    else if (choice == 6)
+    {
+      cout << "Выберите класс:\n";
+      cout << "1 - Human\n2 - Member_of_commision\n3 - Prepod\n4 - "
+              "Prepod_from_commision\n";
+      int cls;
+      cin >> cls;
+
+      if (cls == 1 && !humans.empty())
+      {
+        for (size_t i = 0; i < humans.size(); i++)
+          cout << i << ": " << humans[i] << endl;
+        cout << "Введите индекс: ";
+        size_t idx;
+        cin >> idx;
+        if (idx < humans.size())
+        {
+          string field, value;
+          cout << "Введите поле (name, surname, birthday): ";
+          cin >> field;
+          cout << "Введите новое значение: ";
+          cin >> value;
+          humans[idx].set(field, value);
         }
-        else if (choice == 2) {
-            Member_of_commision m;
-            cout << "Введите: name surname birthday commision_name biography\n";
-            cin >> m;
-            members.push_back(m);
+      }
+      else if (cls == 2 && !members.empty())
+      {
+        for (size_t i = 0; i < members.size(); i++)
+          cout << i << ": " << members[i] << endl;
+        cout << "Введите индекс: ";
+        size_t idx;
+        cin >> idx;
+        if (idx < members.size())
+        {
+          string field, value;
+          cout << "Введите поле (name, surname, birthday, commision_name, "
+                  "biography): ";
+          cin >> field;
+          cout << "Введите новое значение: ";
+          cin >> value;
+          members[idx].set(field, value);
         }
-        else if (choice == 3) {
-            Prepod p;
-            cout << "Введите: name surname birthday degree position works\n";
-            cin >> p;
-            prepods.push_back(p);
+      }
+      else if (cls == 3 && !prepods.empty())
+      {
+        for (size_t i = 0; i < prepods.size(); i++)
+          cout << i << ": " << prepods[i] << endl;
+        cout << "Введите индекс: ";
+        size_t idx;
+        cin >> idx;
+        if (idx < prepods.size())
+        {
+          string field, value;
+          cout << "Введите поле (name, surname, birthday, degree, position, "
+                  "works): ";
+          cin >> field;
+          cout << "Введите новое значение: ";
+          cin >> value;
+          prepods[idx].set(field, value);
         }
-        else if (choice == 4) {
-            Prepod_from_commision pc;
-            cout << "Введите: name surname birthday degree position works commision_name biography commision_works\n";
-            cin >> pc;
-            prepod_members.push_back(pc);
+      }
+      else if (cls == 4 && !prepod_members.empty())
+      {
+        for (size_t i = 0; i < prepod_members.size(); i++)
+          cout << i << ": " << prepod_members[i] << endl;
+        cout << "Введите индекс: ";
+        size_t idx;
+        cin >> idx;
+        if (idx < prepod_members.size())
+        {
+          string field, value;
+          cout << "Введите поле (name, surname, birthday, degree, position, "
+                  "works, commision_name, biography, commision_works): ";
+          cin >> field;
+          cout << "Введите новое значение: ";
+          cin >> value;
+          prepod_members[idx].set(field, value);
         }
-        else if (choice == 5) {
-            cout << "\n=== Humans ===\n";
-            for (auto &h : humans) cout << h << endl;
+      }
+      else
+      {
+        cout << "Список пуст или выбран неверный класс.\n";
+      }
+    }
+  } while (choice != 0);
 
-            cout << "\n=== Members of commission ===\n";
-            for (auto &m : members) cout << m << endl;
-
-            cout << "\n=== Prepods ===\n";
-            for (auto &p : prepods) cout << p << endl;
-
-            cout << "\n=== Prepod_from_commision ===\n";
-            for (auto &pc : prepod_members) cout << pc << endl;
-        }
-        else if (choice == 6) {
-            cout << "Выберите класс:\n";
-            cout << "1 - Human\n2 - Member_of_commision\n3 - Prepod\n4 - Prepod_from_commision\n";
-            int cls; cin >> cls;
-
-            if (cls == 1 && !humans.empty()) {
-                for (size_t i=0;i<humans.size();i++) cout << i << ": " << humans[i] << endl;
-                cout << "Введите индекс: "; size_t idx; cin >> idx;
-                if (idx < humans.size()) {
-                    string field, value;
-                    cout << "Введите поле (name, surname, birthday): "; cin >> field;
-                    cout << "Введите новое значение: "; cin >> value;
-                    humans[idx].set(field, value);
-                }
-            }
-            else if (cls == 2 && !members.empty()) {
-                for (size_t i=0;i<members.size();i++) cout << i << ": " << members[i] << endl;
-                cout << "Введите индекс: "; size_t idx; cin >> idx;
-                if (idx < members.size()) {
-                    string field, value;
-                    cout << "Введите поле (name, surname, birthday, commision_name, biography): "; cin >> field;
-                    cout << "Введите новое значение: "; cin >> value;
-                    members[idx].set(field, value);
-                }
-            }
-            else if (cls == 3 && !prepods.empty()) {
-                for (size_t i=0;i<prepods.size();i++) cout << i << ": " << prepods[i] << endl;
-                cout << "Введите индекс: "; size_t idx; cin >> idx;
-                if (idx < prepods.size()) {
-                    string field, value;
-                    cout << "Введите поле (name, surname, birthday, degree, position, works): "; cin >> field;
-                    cout << "Введите новое значение: "; cin >> value;
-                    prepods[idx].set(field, value);
-                }
-            }
-            else if (cls == 4 && !prepod_members.empty()) {
-                for (size_t i=0;i<prepod_members.size();i++) cout << i << ": " << prepod_members[i] << endl;
-                cout << "Введите индекс: "; size_t idx; cin >> idx;
-                if (idx < prepod_members.size()) {
-                    string field, value;
-                    cout << "Введите поле (name, surname, birthday, degree, position, works, commision_name, biography, commision_works): "; cin >> field;
-                    cout << "Введите новое значение: "; cin >> value;
-                    prepod_members[idx].set(field, value);
-                }
-            }
-        }
-    } while (choice != 0);
-
-    return 0;
+  return 0;
 }

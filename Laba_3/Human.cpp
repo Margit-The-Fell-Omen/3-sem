@@ -9,7 +9,17 @@ Human::Human()
   this->birthday = "Unknown";
 }
 
-Human::Human() {}
+Human::Human(std::string name, std::string surname, std::string birthday) 
+{
+  Human::set("name", name);
+  Human::set("surname", surname);
+  Human::set("birthday", birthday);
+}
+
+Human::Human(const Human &other) 
+{
+
+}
 
 std::string Human::get(std::string param)
 {
@@ -54,6 +64,17 @@ void Human::set(std::string param, std::string value)
   }
 }
 
+Human &Human::operator=(const Human &other)         // перегрузка оператора присваивания
+{
+  if (this != &other) 
+  {
+    this->name = other.name;
+    this->surname = other.surname;
+    this->birthday = other.birthday;
+  }
+  return *this;
+}
+
 std::ostream &operator<<(std::ostream &os,
                          const Human &s) // перегрузка оператора <<
 {
@@ -66,12 +87,12 @@ std::istream &operator>>(std::istream &is,
                          Human &s) // перегрузка оператора >>
 {
   std::cout
-      << "Формат ввода: (имя, фамилия, дата рождения в формате ДД.ММ.ГГГГ)";
-  std::string temp;
-  is >> temp;
-  // TODO: implement copy constructor
-
-  s = Human();
+      << "Формат ввода: (имя фамилия [дата рождения в формате ДД.ММ.ГГГГ])";
+  std::string name;  
+  std::string surname;  
+  std::string birthday;
+  is >> name >> surname >> birthday;
+  s = Human(name, surname, birthday);
 
   return is;
 }

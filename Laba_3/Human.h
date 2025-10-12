@@ -16,6 +16,7 @@ public:
   std::string get(std::string param);
   void set(std::string param, std::string value);
 
+  Human &operator =(const Human &other);
   friend std::ostream &operator<<(std::ostream &os,
                                   const Human &s); // перегрузка оператора <<
   friend std::istream &operator>>(std::istream &is,

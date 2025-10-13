@@ -1,104 +1,50 @@
 #include "Human.h"
 #include <iostream>
-#include <string>
+#include <iomanip>
 
-Human::Human()
-{
-  this->name = "John";
-  this->surname = "Doe";
-  this->birthday = "Unknown";
-}
-
+Human::Human() : name("John"), surname("Doe"), birthday("Unknown") {}
 Human::Human(std::string name, std::string surname, std::string birthday)
-{
-  Human::set("name", name);
-  Human::set("surname", surname);
-  Human::set("birthday", birthday);
-}
-
+    : name(name), surname(surname), birthday(birthday) {}
 Human::Human(const Human &other)
-{
-  this->name = other.get("name");
-  this->surname = other.get("surname");
-  this->birthday = other.get("birthday");
-}
-
+    : name(other.name), surname(other.surname), birthday(other.birthday) {}
 Human::~Human() {}
 
-std::string Human::get(std::string param) const
-{
-  if (param == "name")
-  {
-    return this->name;
-  }
-  else if (param == "surname")
-  {
-    return this->surname;
-  }
-  else if (param == "birthday")
-  {
-    return this->birthday;
-  }
-  else
-  {
-    std::cerr << "Unable to set" << param << ": no such param in class Human"
-              << std::endl;
+std::string Human::get(std::string param) const {
+    if (param == "name") return name;
+    if (param == "surname") return surname;
+    if (param == "birthday") return birthday;
     return "NaN";
-  }
 }
 
-void Human::set(std::string param, std::string value)
-{
-  if (param == "name")
-  {
-    this->name = value;
-  }
-  else if (param == "surname")
-  {
-    this->surname = value;
-  }
-  else if (param == "birthday")
-  {
-    this->birthday = value;
-  }
-  else
-  {
-    std::cerr << "Unable to set" << param << ": no such param in class Human"
-              << std::endl;
-  }
+void Human::set(std::string param, std::string value) {
+    if (param == "name") name = value;
+    else if (param == "surname") surname = value;
+    else if (param == "birthday") birthday = value;
 }
 
-Human &Human::operator=(const Human &other) // перегрузка оператора присваивания
-{
-  if (this != &other)
-  {
-    this->name = other.get("name");
-    this->surname = other.get("surname");
-    this->birthday = other.get("birthday");
-  }
-  return *this;
+Human &Human::operator=(const Human &other) {
+    if (this != &other) {
+        name = other.name;
+        surname = other.surname;
+        birthday = other.birthday;
+    }
+    return *this;
 }
 
-std::ostream &operator<<(std::ostream &os,
-                         const Human &s) // перегрузка оператора <<
-{
-  os << "Human name: " << s.name << ", surname: " << s.surname
-     << ", birthday: " << s.birthday << std::endl;
-  return os;
+void Human::printHeader(std::ostream &os) const {
+    os << std::left << std::setw(15) << "Name"
+       << std::setw(15) << "Surname"
+       << std::setw(15) << "Birthday";
 }
 
-std::istream &operator>>(std::istream &is,
-                         Human &s) // перегрузка оператора >>
-{
-  std::cout
-      << "Формат ввода: (имя фамилия [дата рождения в формате ДД.ММ.ГГГГ])";
-  std::string name;
-  std::string surname;
-  std::string birthday;
-  is >> name >> surname >> birthday;
-  s.set("name", name);
-  s.set("surname", surname);
-  s.set("birthday", birthday);
+std::ostream &operator<<(std::ostream &os, const Human &s) {
+    os << std::left << std::setw(15) << s.name
+       << std::setw(15) << s.surname
+       << std::setw(15) << s.birthday;
+    return os;
+}
 
-  return is;
+std::istream &operator>>(std::istream &is, Human &s) {
+    is >> s.name >> s.surname >> s.birthday;
+    return is;
 }

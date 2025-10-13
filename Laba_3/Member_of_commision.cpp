@@ -2,10 +2,11 @@
 #include <iomanip>
 
 Member_of_commision::Member_of_commision()
-    : commision_name("Commission"), biography("No bio") {}
+    : Human("John", "Doe", "Unknown"), commision_name("Commission"), biography("No bio") {}
 
-Member_of_commision::Member_of_commision(std::string commision_name, std::string biography)
-    : commision_name(commision_name), biography(biography) {}
+Member_of_commision::Member_of_commision(std::string name, std::string surname, std::string birthday,
+                                         std::string commision_name, std::string biography)
+    : Human(name, surname, birthday), commision_name(commision_name), biography(biography) {}
 
 Member_of_commision::Member_of_commision(const Member_of_commision &other)
     : Human(other), commision_name(other.commision_name), biography(other.biography) {}

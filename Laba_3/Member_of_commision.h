@@ -12,7 +12,8 @@ protected:
 
 public:
     Member_of_commision();
-    Member_of_commision(std::string commision_name, std::string biography);
+    Member_of_commision::Member_of_commision(std::string name, std::string surname, std::string birthday,
+                                         std::string commision_name, std::string biography);
     Member_of_commision(const Member_of_commision &other);
     virtual ~Member_of_commision();
 

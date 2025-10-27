@@ -1,0 +1,5 @@
+/home/tim/3sem/Laba_4/build/CMakeFiles/BinTree.dir
+/home/tim/3sem/Laba_4/build/CMakeFiles/BinLeaf.dir
+/home/tim/3sem/Laba_4/build/CMakeFiles/Laba_4.dir
+/home/tim/3sem/Laba_4/build/CMakeFiles/edit_cache.dir
+/home/tim/3sem/Laba_4/build/CMakeFiles/rebuild_cache.dir

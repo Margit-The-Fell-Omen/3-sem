@@ -1,0 +1,2 @@
+/usr/bin/ar qc libBinTree.a CMakeFiles/BinTree.dir/BinTree.cpp.o
+/usr/bin/ranlib libBinTree.a

@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Laba_4.dir/link.d CMakeFiles/Laba_4.dir/main.cpp.o -o Laba_4  libBinTree.a libBinLeaf.a

@@ -955,9 +955,11 @@ CMakeFiles/Laba_4.dir/main.cpp.o: /home/tim/3sem/Laba_4/main.cpp \
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/c++/15.2.1/algorithm \
   /usr/include/c++/15.2.1/backward/auto_ptr.h \
   /usr/include/c++/15.2.1/backward/binders.h \
   /usr/include/c++/15.2.1/bit \
+  /usr/include/c++/15.2.1/bits/algorithmfwd.h \
   /usr/include/c++/15.2.1/bits/align.h \
   /usr/include/c++/15.2.1/bits/alloc_traits.h \
   /usr/include/c++/15.2.1/bits/allocated_ptr.h \
@@ -1007,6 +1009,7 @@ CMakeFiles/Laba_4.dir/main.cpp.o: /home/tim/3sem/Laba_4/main.cpp \
   /usr/include/c++/15.2.1/bits/shared_ptr_atomic.h \
   /usr/include/c++/15.2.1/bits/shared_ptr_base.h \
   /usr/include/c++/15.2.1/bits/std_abs.h \
+  /usr/include/c++/15.2.1/bits/stl_algo.h \
   /usr/include/c++/15.2.1/bits/stl_algobase.h \
   /usr/include/c++/15.2.1/bits/stl_bvector.h \
   /usr/include/c++/15.2.1/bits/stl_construct.h \
@@ -1027,6 +1030,7 @@ CMakeFiles/Laba_4.dir/main.cpp.o: /home/tim/3sem/Laba_4/main.cpp \
   /usr/include/c++/15.2.1/bits/streambuf_iterator.h \
   /usr/include/c++/15.2.1/bits/string_view.tcc \
   /usr/include/c++/15.2.1/bits/stringfwd.h \
+  /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
   /usr/include/c++/15.2.1/bits/unique_ptr.h \
   /usr/include/c++/15.2.1/bits/uses_allocator.h \
   /usr/include/c++/15.2.1/bits/uses_allocator_args.h \
@@ -1063,6 +1067,7 @@ CMakeFiles/Laba_4.dir/main.cpp.o: /home/tim/3sem/Laba_4/main.cpp \
   /usr/include/c++/15.2.1/new \
   /usr/include/c++/15.2.1/ostream \
   /usr/include/c++/15.2.1/pstl/execution_defs.h \
+  /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
   /usr/include/c++/15.2.1/pstl/glue_memory_defs.h \
   /usr/include/c++/15.2.1/pstl/pstl_config.h \
   /usr/include/c++/15.2.1/queue \
@@ -1176,6 +1181,12 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 
 /usr/lib/Scrt1.o:
 
+/usr/include/c++/15.2.1/stack:
+
+/usr/include/c++/15.2.1/pstl/glue_memory_defs.h:
+
+/usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h:
+
 /usr/include/c++/15.2.1/bits/stl_algobase.h:
 
 /usr/include/gnu/stubs-64.h:
@@ -1188,6 +1199,10 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 
 /usr/include/c++/15.2.1/bits/ostream_insert.h:
 
+/usr/include/c++/15.2.1/queue:
+
+/usr/include/c++/15.2.1/bits/ptr_traits.h:
+
 /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h:
 
 /usr/include/c++/15.2.1/bits/ostream.h:
@@ -1199,8 +1214,6 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 /usr/include/c++/15.2.1/bits/memoryfwd.h:
 
 /usr/include/bits/types/wint_t.h:
-
-/usr/include/c++/15.2.1/cwchar:
 
 /usr/include/c++/15.2.1/bits/locale_conv.h:
 
@@ -1216,8 +1229,6 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 
 /usr/include/c++/15.2.1/bits/stl_function.h:
 
-/usr/include/c++/15.2.1/pstl/glue_memory_defs.h:
-
 /usr/include/c++/15.2.1/bits/exception_ptr.h:
 
 /usr/lib/libc.so:
@@ -1225,10 +1236,6 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 /usr/include/bits/pthreadtypes.h:
 
 /home/tim/3sem/Laba_4/Prepod_from_commision.h:
-
-/usr/include/c++/15.2.1/bits/ptr_traits.h:
-
-/usr/include/c++/15.2.1/queue:
 
 /usr/include/c++/15.2.1/bits/exception.h:
 
@@ -1299,6 +1306,10 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 /usr/include/c++/15.2.1/ext/atomicity.h:
 
 /usr/include/bits/types/struct_timespec.h:
+
+/usr/include/c++/15.2.1/vector:
+
+/usr/include/c++/15.2.1/bits/exception_defines.h:
 
 /usr/include/bits/waitflags.h:
 
@@ -1417,8 +1428,6 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 /usr/include/bits/pthreadtypes-arch.h:
 
 /usr/include/gnu/stubs.h:
-
-/usr/include/c++/15.2.1/stack:
 
 /usr/lib/crtn.o:
 
@@ -1566,10 +1575,6 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 
 /usr/include/c++/15.2.1/stdexcept:
 
-/usr/include/c++/15.2.1/bits/exception_defines.h:
-
-/usr/include/c++/15.2.1/vector:
-
 /usr/include/c++/15.2.1/string:
 
 /usr/include/sys/cdefs.h:
@@ -1603,6 +1608,8 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 /usr/include/c++/15.2.1/bits/quoted_string.h:
 
 /usr/include/features-time64.h:
+
+/usr/include/c++/15.2.1/bits/algorithmfwd.h:
 
 /usr/include/bits/endianness.h:
 
@@ -1654,6 +1661,8 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 
 /home/tim/3sem/Laba_4/Order.h:
 
+/usr/include/c++/15.2.1/algorithm:
+
 /usr/include/c++/15.2.1/backward/auto_ptr.h:
 
 /usr/include/c++/15.2.1/bits/atomic_base.h:
@@ -1688,9 +1697,15 @@ CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 
 /usr/include/c++/15.2.1/bits/stl_raw_storage_iter.h:
 
+/usr/include/c++/15.2.1/bits/stl_algo.h:
+
 /usr/include/pthread.h:
 
 /usr/include/c++/15.2.1/bits/stl_uninitialized.h:
+
+/usr/include/c++/15.2.1/cwchar:
+
+/usr/include/c++/15.2.1/bits/uniform_int_dist.h:
 
 /usr/include/c++/15.2.1/bits/unique_ptr.h:
 

@@ -9,6 +9,7 @@ Laba_4: \
   CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o \
   CMakeFiles/Laba_4.dir/BinTree.cpp.o \
   CMakeFiles/Laba_4.dir/BinLeaf.cpp.o \
+  CMakeFiles/Laba_4.dir/functions.cpp.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
@@ -56,6 +57,8 @@ CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o:
 CMakeFiles/Laba_4.dir/BinTree.cpp.o:
 
 CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
+
+CMakeFiles/Laba_4.dir/functions.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so:
 

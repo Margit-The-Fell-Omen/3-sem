@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/tim/3sem/Laba_4/Member_of_commision.cpp" "CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o" "gcc" "CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o.d"
   "/home/tim/3sem/Laba_4/Prepod.cpp" "CMakeFiles/Laba_4.dir/Prepod.cpp.o" "gcc" "CMakeFiles/Laba_4.dir/Prepod.cpp.o.d"
   "/home/tim/3sem/Laba_4/Prepod_from_commision.cpp" "CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o" "gcc" "CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o.d"
+  "/home/tim/3sem/Laba_4/functions.cpp" "CMakeFiles/Laba_4.dir/functions.cpp.o" "gcc" "CMakeFiles/Laba_4.dir/functions.cpp.o.d"
   "/home/tim/3sem/Laba_4/main.cpp" "CMakeFiles/Laba_4.dir/main.cpp.o" "gcc" "CMakeFiles/Laba_4.dir/main.cpp.o.d"
   "" "Laba_4" "gcc" "CMakeFiles/Laba_4.dir/link.d"
   )

@@ -12,6 +12,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Laba_4.dir/Prepod.cpp.o.d"
   "CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o"
   "CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o.d"
+  "CMakeFiles/Laba_4.dir/functions.cpp.o"
+  "CMakeFiles/Laba_4.dir/functions.cpp.o.d"
   "CMakeFiles/Laba_4.dir/main.cpp.o"
   "CMakeFiles/Laba_4.dir/main.cpp.o.d"
   "Laba_4"

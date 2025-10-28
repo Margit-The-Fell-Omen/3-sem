@@ -1,7 +1,8 @@
-CMakeFiles/Laba_4.dir/main.cpp.o: /home/tim/3sem/Laba_4/main.cpp \
- /usr/include/stdc-predef.h /home/tim/3sem/Laba_4/functions.h \
- /home/tim/3sem/Laba_4/BinTree.h /home/tim/3sem/Laba_4/BinLeaf.h \
- /usr/include/c++/15.2.1/memory /usr/include/c++/15.2.1/bits/memoryfwd.h \
+CMakeFiles/Laba_4.dir/functions.cpp.o: \
+ /home/tim/3sem/Laba_4/functions.cpp /usr/include/stdc-predef.h \
+ /home/tim/3sem/Laba_4/functions.h /home/tim/3sem/Laba_4/BinTree.h \
+ /home/tim/3sem/Laba_4/BinLeaf.h /usr/include/c++/15.2.1/memory \
+ /usr/include/c++/15.2.1/bits/memoryfwd.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -172,4 +173,9 @@ CMakeFiles/Laba_4.dir/main.cpp.o: /home/tim/3sem/Laba_4/main.cpp \
  /home/tim/3sem/Laba_4/Member_of_commision.h \
  /home/tim/3sem/Laba_4/Human.h /home/tim/3sem/Laba_4/Prepod.h \
  /home/tim/3sem/Laba_4/Prepod_from_commision.h \
+ /usr/include/c++/15.2.1/algorithm \
+ /usr/include/c++/15.2.1/bits/stl_algo.h \
+ /usr/include/c++/15.2.1/bits/algorithmfwd.h \
+ /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
+ /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
  /usr/include/c++/15.2.1/limits

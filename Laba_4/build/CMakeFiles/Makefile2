@@ -63,14 +63,10 @@ CMAKE_BINARY_DIR = /home/tim/3sem/Laba_4/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/BinTree.dir/all
-all: CMakeFiles/BinLeaf.dir/all
 all: CMakeFiles/Laba_4.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/BinTree.dir/codegen
-codegen: CMakeFiles/BinLeaf.dir/codegen
 codegen: CMakeFiles/Laba_4.dir/codegen
 .PHONY : codegen
 
@@ -79,89 +75,22 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/BinTree.dir/clean
-clean: CMakeFiles/BinLeaf.dir/clean
 clean: CMakeFiles/Laba_4.dir/clean
 .PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/BinTree.dir
-
-# All Build rule for target.
-CMakeFiles/BinTree.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinTree.dir/build.make CMakeFiles/BinTree.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinTree.dir/build.make CMakeFiles/BinTree.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=3,4 "Built target BinTree"
-.PHONY : CMakeFiles/BinTree.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/BinTree.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tim/3sem/Laba_4/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BinTree.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tim/3sem/Laba_4/build/CMakeFiles 0
-.PHONY : CMakeFiles/BinTree.dir/rule
-
-# Convenience name for target.
-BinTree: CMakeFiles/BinTree.dir/rule
-.PHONY : BinTree
-
-# codegen rule for target.
-CMakeFiles/BinTree.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinTree.dir/build.make CMakeFiles/BinTree.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=3,4 "Finished codegen for target BinTree"
-.PHONY : CMakeFiles/BinTree.dir/codegen
-
-# clean rule for target.
-CMakeFiles/BinTree.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinTree.dir/build.make CMakeFiles/BinTree.dir/clean
-.PHONY : CMakeFiles/BinTree.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/BinLeaf.dir
-
-# All Build rule for target.
-CMakeFiles/BinLeaf.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinLeaf.dir/build.make CMakeFiles/BinLeaf.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinLeaf.dir/build.make CMakeFiles/BinLeaf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=1,2 "Built target BinLeaf"
-.PHONY : CMakeFiles/BinLeaf.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/BinLeaf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tim/3sem/Laba_4/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BinLeaf.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tim/3sem/Laba_4/build/CMakeFiles 0
-.PHONY : CMakeFiles/BinLeaf.dir/rule
-
-# Convenience name for target.
-BinLeaf: CMakeFiles/BinLeaf.dir/rule
-.PHONY : BinLeaf
-
-# codegen rule for target.
-CMakeFiles/BinLeaf.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinLeaf.dir/build.make CMakeFiles/BinLeaf.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=1,2 "Finished codegen for target BinLeaf"
-.PHONY : CMakeFiles/BinLeaf.dir/codegen
-
-# clean rule for target.
-CMakeFiles/BinLeaf.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinLeaf.dir/build.make CMakeFiles/BinLeaf.dir/clean
-.PHONY : CMakeFiles/BinLeaf.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Laba_4.dir
 
 # All Build rule for target.
-CMakeFiles/Laba_4.dir/all: CMakeFiles/BinTree.dir/all
-CMakeFiles/Laba_4.dir/all: CMakeFiles/BinLeaf.dir/all
+CMakeFiles/Laba_4.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=5,6 "Built target Laba_4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target Laba_4"
 .PHONY : CMakeFiles/Laba_4.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Laba_4.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tim/3sem/Laba_4/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tim/3sem/Laba_4/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Laba_4.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tim/3sem/Laba_4/build/CMakeFiles 0
 .PHONY : CMakeFiles/Laba_4.dir/rule
@@ -173,7 +102,7 @@ Laba_4: CMakeFiles/Laba_4.dir/rule
 # codegen rule for target.
 CMakeFiles/Laba_4.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=5,6 "Finished codegen for target Laba_4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target Laba_4"
 .PHONY : CMakeFiles/Laba_4.dir/codegen
 
 # clean rule for target.

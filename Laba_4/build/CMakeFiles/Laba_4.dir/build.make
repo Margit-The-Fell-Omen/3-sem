@@ -86,20 +86,114 @@ CMakeFiles/Laba_4.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Laba_4.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tim/3sem/Laba_4/main.cpp -o CMakeFiles/Laba_4.dir/main.cpp.s
 
+CMakeFiles/Laba_4.dir/Human.cpp.o: CMakeFiles/Laba_4.dir/flags.make
+CMakeFiles/Laba_4.dir/Human.cpp.o: /home/tim/3sem/Laba_4/Human.cpp
+CMakeFiles/Laba_4.dir/Human.cpp.o: CMakeFiles/Laba_4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Laba_4.dir/Human.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Laba_4.dir/Human.cpp.o -MF CMakeFiles/Laba_4.dir/Human.cpp.o.d -o CMakeFiles/Laba_4.dir/Human.cpp.o -c /home/tim/3sem/Laba_4/Human.cpp
+
+CMakeFiles/Laba_4.dir/Human.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Laba_4.dir/Human.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tim/3sem/Laba_4/Human.cpp > CMakeFiles/Laba_4.dir/Human.cpp.i
+
+CMakeFiles/Laba_4.dir/Human.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Laba_4.dir/Human.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tim/3sem/Laba_4/Human.cpp -o CMakeFiles/Laba_4.dir/Human.cpp.s
+
+CMakeFiles/Laba_4.dir/Prepod.cpp.o: CMakeFiles/Laba_4.dir/flags.make
+CMakeFiles/Laba_4.dir/Prepod.cpp.o: /home/tim/3sem/Laba_4/Prepod.cpp
+CMakeFiles/Laba_4.dir/Prepod.cpp.o: CMakeFiles/Laba_4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Laba_4.dir/Prepod.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Laba_4.dir/Prepod.cpp.o -MF CMakeFiles/Laba_4.dir/Prepod.cpp.o.d -o CMakeFiles/Laba_4.dir/Prepod.cpp.o -c /home/tim/3sem/Laba_4/Prepod.cpp
+
+CMakeFiles/Laba_4.dir/Prepod.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Laba_4.dir/Prepod.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tim/3sem/Laba_4/Prepod.cpp > CMakeFiles/Laba_4.dir/Prepod.cpp.i
+
+CMakeFiles/Laba_4.dir/Prepod.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Laba_4.dir/Prepod.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tim/3sem/Laba_4/Prepod.cpp -o CMakeFiles/Laba_4.dir/Prepod.cpp.s
+
+CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o: CMakeFiles/Laba_4.dir/flags.make
+CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o: /home/tim/3sem/Laba_4/Member_of_commision.cpp
+CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o: CMakeFiles/Laba_4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o -MF CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o.d -o CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o -c /home/tim/3sem/Laba_4/Member_of_commision.cpp
+
+CMakeFiles/Laba_4.dir/Member_of_commision.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Laba_4.dir/Member_of_commision.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tim/3sem/Laba_4/Member_of_commision.cpp > CMakeFiles/Laba_4.dir/Member_of_commision.cpp.i
+
+CMakeFiles/Laba_4.dir/Member_of_commision.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Laba_4.dir/Member_of_commision.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tim/3sem/Laba_4/Member_of_commision.cpp -o CMakeFiles/Laba_4.dir/Member_of_commision.cpp.s
+
+CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o: CMakeFiles/Laba_4.dir/flags.make
+CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o: /home/tim/3sem/Laba_4/Prepod_from_commision.cpp
+CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o: CMakeFiles/Laba_4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o -MF CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o.d -o CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o -c /home/tim/3sem/Laba_4/Prepod_from_commision.cpp
+
+CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tim/3sem/Laba_4/Prepod_from_commision.cpp > CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.i
+
+CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tim/3sem/Laba_4/Prepod_from_commision.cpp -o CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.s
+
+CMakeFiles/Laba_4.dir/BinTree.cpp.o: CMakeFiles/Laba_4.dir/flags.make
+CMakeFiles/Laba_4.dir/BinTree.cpp.o: /home/tim/3sem/Laba_4/BinTree.cpp
+CMakeFiles/Laba_4.dir/BinTree.cpp.o: CMakeFiles/Laba_4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Laba_4.dir/BinTree.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Laba_4.dir/BinTree.cpp.o -MF CMakeFiles/Laba_4.dir/BinTree.cpp.o.d -o CMakeFiles/Laba_4.dir/BinTree.cpp.o -c /home/tim/3sem/Laba_4/BinTree.cpp
+
+CMakeFiles/Laba_4.dir/BinTree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Laba_4.dir/BinTree.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tim/3sem/Laba_4/BinTree.cpp > CMakeFiles/Laba_4.dir/BinTree.cpp.i
+
+CMakeFiles/Laba_4.dir/BinTree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Laba_4.dir/BinTree.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tim/3sem/Laba_4/BinTree.cpp -o CMakeFiles/Laba_4.dir/BinTree.cpp.s
+
+CMakeFiles/Laba_4.dir/BinLeaf.cpp.o: CMakeFiles/Laba_4.dir/flags.make
+CMakeFiles/Laba_4.dir/BinLeaf.cpp.o: /home/tim/3sem/Laba_4/BinLeaf.cpp
+CMakeFiles/Laba_4.dir/BinLeaf.cpp.o: CMakeFiles/Laba_4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Laba_4.dir/BinLeaf.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Laba_4.dir/BinLeaf.cpp.o -MF CMakeFiles/Laba_4.dir/BinLeaf.cpp.o.d -o CMakeFiles/Laba_4.dir/BinLeaf.cpp.o -c /home/tim/3sem/Laba_4/BinLeaf.cpp
+
+CMakeFiles/Laba_4.dir/BinLeaf.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Laba_4.dir/BinLeaf.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tim/3sem/Laba_4/BinLeaf.cpp > CMakeFiles/Laba_4.dir/BinLeaf.cpp.i
+
+CMakeFiles/Laba_4.dir/BinLeaf.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Laba_4.dir/BinLeaf.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tim/3sem/Laba_4/BinLeaf.cpp -o CMakeFiles/Laba_4.dir/BinLeaf.cpp.s
+
 # Object files for target Laba_4
 Laba_4_OBJECTS = \
-"CMakeFiles/Laba_4.dir/main.cpp.o"
+"CMakeFiles/Laba_4.dir/main.cpp.o" \
+"CMakeFiles/Laba_4.dir/Human.cpp.o" \
+"CMakeFiles/Laba_4.dir/Prepod.cpp.o" \
+"CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o" \
+"CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o" \
+"CMakeFiles/Laba_4.dir/BinTree.cpp.o" \
+"CMakeFiles/Laba_4.dir/BinLeaf.cpp.o"
 
 # External object files for target Laba_4
 Laba_4_EXTERNAL_OBJECTS =
 
 Laba_4: CMakeFiles/Laba_4.dir/main.cpp.o
+Laba_4: CMakeFiles/Laba_4.dir/Human.cpp.o
+Laba_4: CMakeFiles/Laba_4.dir/Prepod.cpp.o
+Laba_4: CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o
+Laba_4: CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o
+Laba_4: CMakeFiles/Laba_4.dir/BinTree.cpp.o
+Laba_4: CMakeFiles/Laba_4.dir/BinLeaf.cpp.o
 Laba_4: CMakeFiles/Laba_4.dir/build.make
 Laba_4: CMakeFiles/Laba_4.dir/compiler_depend.ts
-Laba_4: libBinTree.a
-Laba_4: libBinLeaf.a
 Laba_4: CMakeFiles/Laba_4.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Laba_4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tim/3sem/Laba_4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Laba_4"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Laba_4.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

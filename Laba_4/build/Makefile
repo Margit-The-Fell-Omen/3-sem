@@ -117,32 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named BinTree
-
-# Build rule for target.
-BinTree: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BinTree
-.PHONY : BinTree
-
-# fast build rule for target.
-BinTree/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinTree.dir/build.make CMakeFiles/BinTree.dir/build
-.PHONY : BinTree/fast
-
-#=============================================================================
-# Target rules for targets named BinLeaf
-
-# Build rule for target.
-BinLeaf: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BinLeaf
-.PHONY : BinLeaf
-
-# fast build rule for target.
-BinLeaf/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinLeaf.dir/build.make CMakeFiles/BinLeaf.dir/build
-.PHONY : BinLeaf/fast
-
-#=============================================================================
 # Target rules for targets named Laba_4
 
 # Build rule for target.
@@ -160,7 +134,7 @@ BinLeaf.o: BinLeaf.cpp.o
 
 # target to build an object file
 BinLeaf.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinLeaf.dir/build.make CMakeFiles/BinLeaf.dir/BinLeaf.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/BinLeaf.cpp.o
 .PHONY : BinLeaf.cpp.o
 
 BinLeaf.i: BinLeaf.cpp.i
@@ -168,7 +142,7 @@ BinLeaf.i: BinLeaf.cpp.i
 
 # target to preprocess a source file
 BinLeaf.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinLeaf.dir/build.make CMakeFiles/BinLeaf.dir/BinLeaf.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/BinLeaf.cpp.i
 .PHONY : BinLeaf.cpp.i
 
 BinLeaf.s: BinLeaf.cpp.s
@@ -176,7 +150,7 @@ BinLeaf.s: BinLeaf.cpp.s
 
 # target to generate assembly for a file
 BinLeaf.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinLeaf.dir/build.make CMakeFiles/BinLeaf.dir/BinLeaf.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/BinLeaf.cpp.s
 .PHONY : BinLeaf.cpp.s
 
 BinTree.o: BinTree.cpp.o
@@ -184,7 +158,7 @@ BinTree.o: BinTree.cpp.o
 
 # target to build an object file
 BinTree.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinTree.dir/build.make CMakeFiles/BinTree.dir/BinTree.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/BinTree.cpp.o
 .PHONY : BinTree.cpp.o
 
 BinTree.i: BinTree.cpp.i
@@ -192,7 +166,7 @@ BinTree.i: BinTree.cpp.i
 
 # target to preprocess a source file
 BinTree.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinTree.dir/build.make CMakeFiles/BinTree.dir/BinTree.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/BinTree.cpp.i
 .PHONY : BinTree.cpp.i
 
 BinTree.s: BinTree.cpp.s
@@ -200,8 +174,104 @@ BinTree.s: BinTree.cpp.s
 
 # target to generate assembly for a file
 BinTree.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BinTree.dir/build.make CMakeFiles/BinTree.dir/BinTree.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/BinTree.cpp.s
 .PHONY : BinTree.cpp.s
+
+Human.o: Human.cpp.o
+.PHONY : Human.o
+
+# target to build an object file
+Human.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Human.cpp.o
+.PHONY : Human.cpp.o
+
+Human.i: Human.cpp.i
+.PHONY : Human.i
+
+# target to preprocess a source file
+Human.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Human.cpp.i
+.PHONY : Human.cpp.i
+
+Human.s: Human.cpp.s
+.PHONY : Human.s
+
+# target to generate assembly for a file
+Human.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Human.cpp.s
+.PHONY : Human.cpp.s
+
+Member_of_commision.o: Member_of_commision.cpp.o
+.PHONY : Member_of_commision.o
+
+# target to build an object file
+Member_of_commision.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o
+.PHONY : Member_of_commision.cpp.o
+
+Member_of_commision.i: Member_of_commision.cpp.i
+.PHONY : Member_of_commision.i
+
+# target to preprocess a source file
+Member_of_commision.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Member_of_commision.cpp.i
+.PHONY : Member_of_commision.cpp.i
+
+Member_of_commision.s: Member_of_commision.cpp.s
+.PHONY : Member_of_commision.s
+
+# target to generate assembly for a file
+Member_of_commision.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Member_of_commision.cpp.s
+.PHONY : Member_of_commision.cpp.s
+
+Prepod.o: Prepod.cpp.o
+.PHONY : Prepod.o
+
+# target to build an object file
+Prepod.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Prepod.cpp.o
+.PHONY : Prepod.cpp.o
+
+Prepod.i: Prepod.cpp.i
+.PHONY : Prepod.i
+
+# target to preprocess a source file
+Prepod.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Prepod.cpp.i
+.PHONY : Prepod.cpp.i
+
+Prepod.s: Prepod.cpp.s
+.PHONY : Prepod.s
+
+# target to generate assembly for a file
+Prepod.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Prepod.cpp.s
+.PHONY : Prepod.cpp.s
+
+Prepod_from_commision.o: Prepod_from_commision.cpp.o
+.PHONY : Prepod_from_commision.o
+
+# target to build an object file
+Prepod_from_commision.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o
+.PHONY : Prepod_from_commision.cpp.o
+
+Prepod_from_commision.i: Prepod_from_commision.cpp.i
+.PHONY : Prepod_from_commision.i
+
+# target to preprocess a source file
+Prepod_from_commision.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.i
+.PHONY : Prepod_from_commision.cpp.i
+
+Prepod_from_commision.s: Prepod_from_commision.cpp.s
+.PHONY : Prepod_from_commision.s
+
+# target to generate assembly for a file
+Prepod_from_commision.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Laba_4.dir/build.make CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.s
+.PHONY : Prepod_from_commision.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -235,8 +305,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... BinLeaf"
-	@echo "... BinTree"
 	@echo "... Laba_4"
 	@echo "... BinLeaf.o"
 	@echo "... BinLeaf.i"
@@ -244,6 +312,18 @@ help:
 	@echo "... BinTree.o"
 	@echo "... BinTree.i"
 	@echo "... BinTree.s"
+	@echo "... Human.o"
+	@echo "... Human.i"
+	@echo "... Human.s"
+	@echo "... Member_of_commision.o"
+	@echo "... Member_of_commision.i"
+	@echo "... Member_of_commision.s"
+	@echo "... Prepod.o"
+	@echo "... Prepod.i"
+	@echo "... Prepod.s"
+	@echo "... Prepod_from_commision.o"
+	@echo "... Prepod_from_commision.i"
+	@echo "... Prepod_from_commision.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -3,8 +3,12 @@ Laba_4: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
   CMakeFiles/Laba_4.dir/main.cpp.o \
-  libBinTree.a \
-  libBinLeaf.a \
+  CMakeFiles/Laba_4.dir/Human.cpp.o \
+  CMakeFiles/Laba_4.dir/Prepod.cpp.o \
+  CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o \
+  CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o \
+  CMakeFiles/Laba_4.dir/BinTree.cpp.o \
+  CMakeFiles/Laba_4.dir/BinLeaf.cpp.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
@@ -41,9 +45,17 @@ Laba_4: \
 
 CMakeFiles/Laba_4.dir/main.cpp.o:
 
-libBinTree.a:
+CMakeFiles/Laba_4.dir/Human.cpp.o:
 
-libBinLeaf.a:
+CMakeFiles/Laba_4.dir/Prepod.cpp.o:
+
+CMakeFiles/Laba_4.dir/Member_of_commision.cpp.o:
+
+CMakeFiles/Laba_4.dir/Prepod_from_commision.cpp.o:
+
+CMakeFiles/Laba_4.dir/BinTree.cpp.o:
+
+CMakeFiles/Laba_4.dir/BinLeaf.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so:
 

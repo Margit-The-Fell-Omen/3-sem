@@ -1,2 +1,0 @@
-/usr/bin/ar qc libBinLeaf.a CMakeFiles/BinLeaf.dir/BinLeaf.cpp.o
-/usr/bin/ranlib libBinLeaf.a

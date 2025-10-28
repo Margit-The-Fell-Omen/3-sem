@@ -114,7 +114,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/BinTree.dir/DependInfo.cmake"
-  "CMakeFiles/BinLeaf.dir/DependInfo.cmake"
   "CMakeFiles/Laba_4.dir/DependInfo.cmake"
   )

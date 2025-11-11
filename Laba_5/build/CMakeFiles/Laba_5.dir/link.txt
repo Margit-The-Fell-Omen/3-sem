@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Laba_5.dir/link.d CMakeFiles/Laba_5.dir/main.cpp.o CMakeFiles/Laba_5.dir/Exception.cpp.o CMakeFiles/Laba_5.dir/Human.cpp.o CMakeFiles/Laba_5.dir/Member_of_commision.cpp.o CMakeFiles/Laba_5.dir/Prepod_from_commision.cpp.o CMakeFiles/Laba_5.dir/Prepod.cpp.o CMakeFiles/Laba_5.dir/InputException.cpp.o -o Laba_5

@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+// ИСПРАВЛЕНО: Наследование от двух классов, которые оба виртуально наследуют
+// Human
 class Prepod_from_commision : public Prepod, public Member_of_commision
 {
 private:
@@ -25,13 +27,11 @@ public:
 
   Prepod_from_commision &operator=(const Prepod_from_commision &other);
 
-  // Comparison operators
   bool operator<(const Prepod_from_commision &other) const;
   bool operator>(const Prepod_from_commision &other) const;
   bool operator==(const Prepod_from_commision &other) const;
 
   void printHeader(std::ostream &os) const override;
-  static void printInputPrompt();
 
   friend std::ostream &operator<<(std::ostream &os,
                                   const Prepod_from_commision &s);

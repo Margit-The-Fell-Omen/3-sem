@@ -1,17 +1,19 @@
 #include "Prepod.h"
+#include "InputException.h"
 #include <iomanip>
 
-Prepod::Prepod() : degree("Unknown"), position("Unknown"), works("None") {}
+Prepod::Prepod() : degree("Неизвестно"), position("Неизвестно"), works("Нет") {}
+
 Prepod::Prepod(std::string degree, std::string position, std::string works)
     : degree(degree), position(position), works(works)
 {
 }
+
 Prepod::Prepod(const Prepod &other)
     : Human(other), degree(other.degree), position(other.position),
       works(other.works)
 {
 }
-Prepod::~Prepod() {}
 
 std::string Prepod::get(std::string param) const
 {
@@ -36,28 +38,19 @@ void Prepod::set(std::string param, std::string value)
     Human::set(param, value);
 }
 
-Prepod &Prepod::operator=(const Prepod &other)
+void Prepod::printHeader(std::ostream &os) const
 {
-  if (this != &other)
-  {
-    Human::operator=(other);
-    degree = other.degree;
-    position = other.position;
-    works = other.works;
-  }
-  return *this;
+  Human::printHeader(os);
+  os << std::left << std::setw(15) << "Степень" << std::setw(15) << "Должность"
+     << std::setw(25) << "Работы";
 }
 
-// Comparison operators for Prepod
 bool Prepod::operator<(const Prepod &other) const
 {
-  // First compare by Human criteria (surname, name)
   if (static_cast<const Human &>(*this) < static_cast<const Human &>(other))
     return true;
   if (static_cast<const Human &>(other) < static_cast<const Human &>(*this))
     return false;
-
-  // If Human parts are equal, compare by degree
   return degree < other.degree;
 }
 
@@ -71,44 +64,28 @@ bool Prepod::operator==(const Prepod &other) const
          works == other.works;
 }
 
-void Prepod::printHeader(std::ostream &os) const
+std::ostream &operator<<(std::ostream &os, const Prepod &p)
 {
-  Human::printHeader(os);
-  os << std::setw(15) << "Degree" << std::setw(15) << "Position"
-     << std::setw(25) << "Works" << std::endl;
-}
-
-void Prepod::printInputPrompt()
-{
-  std::cout << "Формат: Фамилия Имя Дата_рождения(ДД.ММ.ГГГГ) Ученая_степень "
-               "Должность Работы\n";
-  std::cout
-      << "Пример: Петров Петр 15.05.1985 Кандидат_наук Доцент Научные_статьи\n";
-}
-std::ostream &operator<<(std::ostream &os, const Prepod &s)
-{
-  os << static_cast<const Human &>(s) << std::setw(15) << s.degree
-     << std::setw(15) << s.position << std::setw(25) << s.works;
+  os << static_cast<const Human &>(p) << std::left << std::setw(20)
+     << p.get("degree") << std::setw(15) << p.get("position") << std::setw(25)
+     << p.get("works");
   return os;
 }
 
-std::istream &operator>>(std::istream &is, Prepod &s)
+std::istream &operator>>(std::istream &is, Prepod &p)
 {
-  is >> static_cast<Human &>(s);
-  if (!is)
-    return is;
+  is >> static_cast<Human &>(p);
 
-  std::string temp_degree, temp_position, temp_works;
-  if (!(is >> temp_degree >> temp_position >> temp_works))
-    return is;
+  std::string temp_degree =
+      InputException::readAndValidateNameField("Введите ученую степень: ");
+  std::string temp_position =
+      InputException::readAndValidateNameField("Введите должность: ");
+  std::string temp_works =
+      InputException::readSingleWord("Введите работы (одно слово): ");
 
-  InputException::checkNoSpecialCharsOrDigits_UTF8(temp_degree,
-                                                   "Ученая_степень");
-  InputException::checkNoSpecialCharsOrDigits_UTF8(temp_position, "Должность");
-
-  s.set("degree", temp_degree);
-  s.set("position", temp_position);
-  s.set("works", temp_works);
+  p.set("degree", temp_degree);
+  p.set("position", temp_position);
+  p.set("works", temp_works);
 
   return is;
 }

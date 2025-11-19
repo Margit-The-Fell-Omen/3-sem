@@ -21,13 +21,11 @@ public:
 
   Member_of_commision &operator=(const Member_of_commision &other);
 
-  // Comparison operators
   bool operator<(const Member_of_commision &other) const;
   bool operator>(const Member_of_commision &other) const;
   bool operator==(const Member_of_commision &other) const;
 
   void printHeader(std::ostream &os) const override;
-  static void printInputPrompt();
 
   friend std::ostream &operator<<(std::ostream &os,
                                   const Member_of_commision &s);

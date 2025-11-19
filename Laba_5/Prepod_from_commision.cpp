@@ -1,8 +1,8 @@
 #include "Prepod_from_commision.h"
+#include "InputException.h"
 #include <iomanip>
 
-Prepod_from_commision::Prepod_from_commision()
-    : Human(), Prepod(), Member_of_commision(), commision_works("None")
+Prepod_from_commision::Prepod_from_commision() : Human(), commision_works("Нет")
 {
 }
 
@@ -27,12 +27,15 @@ Prepod_from_commision::~Prepod_from_commision() {}
 
 std::string Prepod_from_commision::get(std::string param) const
 {
-  if (param == "commision_works")
+  if (param == "commision_works" || param == "работы_в_комиссии")
     return commision_works;
+  // Сначала проверяем поля Prepod
   if (param == "degree" || param == "position" || param == "works")
     return Prepod::get(param);
+  // Затем поля Member_of_commision
   if (param == "commision_name" || param == "biography")
     return Member_of_commision::get(param);
+  // В конце - поля Human
   return Human::get(param);
 }
 
@@ -60,16 +63,13 @@ Prepod_from_commision::operator=(const Prepod_from_commision &other)
   return *this;
 }
 
-// Comparison operators for Prepod_from_commision
 bool Prepod_from_commision::operator<(const Prepod_from_commision &other) const
 {
-  // First compare by Human criteria
   if (static_cast<const Human &>(*this) < static_cast<const Human &>(other))
     return true;
   if (static_cast<const Human &>(other) < static_cast<const Human &>(*this))
     return false;
-
-  // If Human parts are equal, compare by commission works
+  // Можно добавить сравнение по другим полям для уникальности, если нужно
   return commision_works < other.commision_works;
 }
 
@@ -80,65 +80,62 @@ bool Prepod_from_commision::operator>(const Prepod_from_commision &other) const
 
 bool Prepod_from_commision::operator==(const Prepod_from_commision &other) const
 {
-  return static_cast<const Human &>(*this) ==
-             static_cast<const Human &>(other) &&
-         static_cast<const Prepod &>(*this) ==
-             static_cast<const Prepod &>(other) &&
-         static_cast<const Member_of_commision &>(*this) ==
-             static_cast<const Member_of_commision &>(other) &&
+  return Prepod::operator==(other) && Member_of_commision::operator==(other) &&
          commision_works == other.commision_works;
 }
 
 void Prepod_from_commision::printHeader(std::ostream &os) const
 {
+  // Выводим заголовки всех полей, избегая дублирования Human
   Human::printHeader(os);
-  os << std::setw(15) << "Degree" << std::setw(15) << "Position"
-     << std::setw(25) << "Works" << std::setw(20) << "Commission"
-     << std::setw(20) << "Biography" << std::setw(25) << "Commision Works"
-     << std::endl;
+  os << std::left << std::setw(20) << "Степень" << std::setw(15) << "Должность"
+     << std::setw(25) << "Работы" << std::setw(25) << "Название комиссии"
+     << std::setw(30) << "Биография" << std::setw(25) << "Работы в комиссии";
 }
 
-void Prepod_from_commision::printInputPrompt()
-{
-  std::cout
-      << "Формат: Фамилия Имя Дата_рождения(ДД.ММ.ГГГГ) Ученая_степень "
-         "Должность Работы Название_комиссии Биография Работы_в_комиссии\n";
-  std::cout
-      << "Пример: Сидорова Анна 20.03.1980 Доктор_наук Профессор Монографии "
-         "Научная_комиссия Исследователь Разработка_программ\n";
-}
 std::ostream &operator<<(std::ostream &os, const Prepod_from_commision &s)
 {
+  // Выводим все поля, явно приводя к типам, чтобы вызвать нужные operator<<
   os << static_cast<const Human &>(s);
-  os << std::setw(15) << s.degree << std::setw(15) << s.position
-     << std::setw(25) << s.works << std::setw(20) << s.commision_name
-     << std::setw(20) << s.biography << std::setw(25) << s.commision_works;
+  // Используем геттеры для полей из Prepod и Member_of_commision, чтобы
+  // избежать неоднозначности
+  os << std::left << std::setw(20) << s.Prepod::get("degree") << std::setw(15)
+     << s.Prepod::get("position") << std::setw(25) << s.Prepod::get("works")
+     << std::setw(25) << s.Member_of_commision::get("commision_name")
+     << std::setw(30) << s.Member_of_commision::get("biography")
+     << std::setw(25) << s.get("commision_works"); // Уникальное поле
   return os;
 }
 
+// ИСПРАВЛЕНА РЕАЛИЗАЦИЯ
 std::istream &operator>>(std::istream &is, Prepod_from_commision &pfc)
 {
-  // 1. Вызываем оператор базового класса Prepod. Исключения будут переданы
-  // наверх.
-  is >> static_cast<Prepod &>(pfc);
-  if (!is)
-    return is;
+  // ПРАВИЛЬНЫЙ ПОДХОД:
+  // 1. Вызываем ввод для Human
+  is >> static_cast<Human &>(pfc);
 
-  // 2. Читаем поля этого класса во временные переменные
-  std::string temp_c_name, temp_bio, temp_c_works;
-  if (!(is >> temp_c_name >> temp_bio >> temp_c_works))
-  {
-    return is;
-  }
+  // 2. Вводим поля Prepod
+  std::string temp_degree =
+      InputException::readAndValidateNameField("Введите ученую степень: ");
+  std::string temp_position =
+      InputException::readAndValidateNameField("Введите должность: ");
+  std::string temp_works =
+      InputException::readSingleWord("Введите работы (одно слово): ");
+  pfc.Prepod::set("degree", temp_degree);
+  pfc.Prepod::set("position", temp_position);
+  pfc.Prepod::set("works", temp_works);
 
-  // 3. Валидируем данные. Исключения будут переданы наверх.
-  InputException::checkNoSpecialCharsOrDigits_UTF8(temp_c_name,
-                                                   "Название коммисии");
-  // Для биографии и работ валидацию можно пропустить
+  // 3. Вводим поля Member_of_commision
+  std::string temp_commision =
+      InputException::readAndValidateNameField("Введите название комиссии: ");
+  std::string temp_bio =
+      InputException::readSingleWord("Введите биографию (одно слово): ");
+  pfc.Member_of_commision::set("commision_name", temp_commision);
+  pfc.Member_of_commision::set("biography", temp_bio);
 
-  // 4. Если все в порядке, присваиваем значения
-  pfc.set("commision_name", temp_c_name);
-  pfc.set("biography", temp_bio);
+  // 4. Вводим уникальное поле этого класса
+  std::string temp_c_works = InputException::readSingleWord(
+      "Введите работы в комиссии (одно слово): ");
   pfc.set("commision_works", temp_c_works);
 
   return is;

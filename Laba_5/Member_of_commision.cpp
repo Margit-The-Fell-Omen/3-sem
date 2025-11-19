@@ -1,8 +1,9 @@
 #include "Member_of_commision.h"
+#include "InputException.h" // Подключаем для доступа к интерактивным методам ввода
 #include <iomanip>
 
 Member_of_commision::Member_of_commision()
-    : commision_name("Commission"), biography("No bio")
+    : commision_name("Неизвестно"), biography("Нет")
 {
 }
 
@@ -22,9 +23,9 @@ Member_of_commision::~Member_of_commision() {}
 
 std::string Member_of_commision::get(std::string param) const
 {
-  if (param == "commision_name")
+  if (param == "commision_name" || param == "название_комиссии")
     return commision_name;
-  if (param == "biography")
+  if (param == "biography" || param == "биография")
     return biography;
   return Human::get(param);
 }
@@ -51,16 +52,14 @@ Member_of_commision::operator=(const Member_of_commision &other)
   return *this;
 }
 
-// Comparison operators for Member_of_commision
+// Операторы сравнения для Member_of_commision
 bool Member_of_commision::operator<(const Member_of_commision &other) const
 {
-  // First compare by Human criteria
   if (static_cast<const Human &>(*this) < static_cast<const Human &>(other))
     return true;
   if (static_cast<const Human &>(other) < static_cast<const Human &>(*this))
     return false;
 
-  // If Human parts are equal, compare by commission name
   return commision_name < other.commision_name;
 }
 
@@ -79,44 +78,27 @@ bool Member_of_commision::operator==(const Member_of_commision &other) const
 void Member_of_commision::printHeader(std::ostream &os) const
 {
   Human::printHeader(os);
-  os << std::setw(20) << "Commission" << std::setw(20) << "Biography"
-     << std::endl;
-}
-
-void Member_of_commision::printInputPrompt()
-{
-  std::cout << "Формат: Фамилия Имя Дата_рождения(ДД.ММ.ГГГГ) "
-               "Название_комиссии Биография\n";
-  std::cout << "Пример: Иванов Иван 01.01.1990 Математическая_комиссия "
-               "Преподаватель_математики\n";
+  os << std::left << std::setw(25) << "Название комиссии" << std::setw(30)
+     << "Биография";
 }
 
 std::ostream &operator<<(std::ostream &os, const Member_of_commision &s)
 {
-  os << static_cast<const Human &>(s) << std::setw(20) << s.commision_name
-     << std::setw(20) << s.biography;
+  os << static_cast<const Human &>(s) << std::left << std::setw(25)
+     << s.get("commision_name") << std::setw(30) << s.get("biography");
   return os;
 }
 
+// --- ПЕРЕРАБОТАННЫЙ ОПЕРАТОР ВВОДА ---
 std::istream &operator>>(std::istream &is, Member_of_commision &m)
 {
-  // 1. Вызываем оператор базового класса. Исключения будут переданы наверх.
   is >> static_cast<Human &>(m);
-  if (!is)
-    return is;
 
-  // 2. Читаем поля производного класса во временные переменные
-  std::string temp_commision, temp_bio;
-  if (!(is >> temp_commision >> temp_bio))
-  {
-    return is;
-  }
+  std::string temp_commision =
+      InputException::readAndValidateNameField("Введите название комиссии: ");
+  std::string temp_bio =
+      InputException::readSingleWord("Введите биографию (одно слово): ");
 
-  // 3. Валидируем данные. Исключения будут переданы наверх.
-  InputException::checkNoSpecialCharsOrDigits_UTF8(temp_commision,
-                                                   "Название коммисии");
-
-  // 4. Если все в порядке, присваиваем значения
   m.set("commision_name", temp_commision);
   m.set("biography", temp_bio);
 

@@ -4,13 +4,12 @@
 #include "Prepod.h"
 #include "Prepod_from_commision.h"
 #include <iostream>
-
-// TODO:  add overrides to iterators maybe and thats kinda it)
+#include <limits>
 
 int main()
 {
   // Главное меню приложения, где пользователь выбирает тип данных
-  int mainChoice;
+  int mainChoice = 0;
   while (true)
   {
     std::cout << "\n--- Главное меню ---\n";
@@ -19,7 +18,18 @@ int main()
     std::cout << "3. Работать с Prepod_from_commision\n";
     std::cout << "4. Выход\n";
     std::cout << "Ваш выбор: ";
+
     std::cin >> mainChoice;
+
+    // Проверка на случай, если ввод не является числом
+    if (std::cin.fail())
+    {
+      std::cin.clear(); // Сбрасываем флаг ошибки
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(),
+                      '\n'); // Очищаем буфер
+      std::cerr << "[Ошибка]: Пожалуйста, введите число.\n";
+      continue;
+    }
 
     if (mainChoice == 1)
     {
@@ -46,13 +56,6 @@ int main()
     else
     {
       std::cout << "Неверный выбор.\n";
-    }
-
-    // Очистка буфера на случай некорректного ввода
-    if (std::cin.fail())
-    {
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
   }
 

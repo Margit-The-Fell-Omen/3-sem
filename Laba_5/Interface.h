@@ -1,10 +1,7 @@
 #pragma once
-
 #include "BinTree.h"
-#include "ExceptionHandler.h"
-#include "Member_of_commision.h"
-#include "Prepod.h"
-#include "Prepod_from_commision.h"
+#include "BinTreeException.h"
+#include "Prepod.h" // И другие классы данных
 #include <algorithm>
 #include <iostream>
 #include <limits>
@@ -15,29 +12,22 @@ template <typename T> class Interface
 {
 private:
   BinTree<T> &tree;
-  const std::string &className;
+  const std::string className;
   bool isRunning = true;
 
-  // Отображает меню
   void _displayMenu() const;
-  // Получает выбор пользователя
   int _getUserChoice();
-  // Обрабатывает выбор пользователя
-  bool _processChoice(int choice);
+  void _processChoice(int choice);
 
 public:
   Interface(BinTree<T> &treeRef, const std::string &name);
   void run();
 };
 
-// --- РЕАЛИЗАЦИЯ МЕТОДОВ ---
-
 template <typename T>
 Interface<T>::Interface(BinTree<T> &treeRef, const std::string &name)
     : tree(treeRef), className(name)
 {
-  // Включаем исключения для cin на время жизни объекта интерфейса
-  std::cin.exceptions(std::ios_base::failbit);
 }
 
 template <typename T> void Interface<T>::_displayMenu() const
@@ -60,9 +50,14 @@ template <typename T> void Interface<T>::_displayMenu() const
 template <typename T> int Interface<T>::_getUserChoice()
 {
   int choice;
-  std::cin >>
-      choice; // Может бросить исключение, которое поймает ExceptionHandler
-  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  std::cin >> choice;
+  if (std::cin.fail())
+  {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    throw BinTreeException("Неверный выбор меню. Пожалуйста, введите число.");
+  }
+  // std::cin.ignore здесь не нужен, т.к. интерактивный ввод теперь пословный
   return choice;
 }
 
@@ -71,61 +66,67 @@ template <typename T> void Interface<T>::run()
   while (isRunning)
   {
     _displayMenu();
-
-    ExceptionHandler::execute(
-        [&]()
-        {
-          int choice = _getUserChoice();
-          if (!_processChoice(choice))
-          {
-            isRunning = false;
-          }
-        });
+    try
+    {
+      int choice = _getUserChoice();
+      _processChoice(choice);
+    }
+    catch (const BinTreeException &e) // Ловим ТОЛЬКО ошибки контейнера
+    {
+      std::cerr << "\n[ОШИБКА ОПЕРАЦИИ]: " << e.GetMessage() << std::endl;
+    }
   }
-  // Отключаем исключения cin после завершения работы меню
-  std::cin.exceptions(std::ios_base::goodbit);
 }
 
-template <typename T> bool Interface<T>::_processChoice(int choice)
+template <typename T> void Interface<T>::_processChoice(int choice)
 {
-  T value;
-  T oldValue, newValue;
   std::string searchParam, searchValue;
+
+  // Clear the input buffer before any getline operations
+  auto clearInputBuffer = []()
+  { std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); };
 
   switch (choice)
   {
-  case 1: // Insert
+  case 1: // Добавить
   {
-    std::cout << "Введите данные для добавления " << className << ":\n";
-    T::printInputPrompt();
-    std::cin >> value; // Теперь бросает InputException напрямую
+    std::cout << "\n--- Добавление нового элемента ---\n";
+    T value;
+    std::cin >> value;
     tree.insert(value);
     std::cout << "Успешно добавлено!\n";
+    clearInputBuffer(); // Clear buffer after cin >>
     break;
   }
-  case 2: // Remove
+  case 2: // Удалить
   {
-    std::cout << "Введите данные " << className << " для удаления:\n";
-    T::printInputPrompt();
+    std::cout << "\n--- Удаление элемента ---\n";
+    T value;
     std::cin >> value;
     tree.remove(value);
     std::cout << "Успешно удалено!\n";
+    clearInputBuffer(); // Clear buffer after cin >>
     break;
   }
-  case 3: // Update
+  case 3: // Обновить
   {
-    std::cout << "Введите старые данные " << className << ":\n";
-    T::printInputPrompt();
+    std::cout << "\n--- Обновление элемента ---\n";
+    T oldValue, newValue;
+    std::cout << "Введите СТАРЫЕ данные элемента для обновления:\n";
     std::cin >> oldValue;
-    std::cout << "Введите новые данные " << className << ":\n";
-    T::printInputPrompt();
+    clearInputBuffer(); // Clear buffer after first cin >>
+
+    std::cout << "Введите НОВЫЕ данные для элемента:\n";
     std::cin >> newValue;
     tree.update(oldValue, newValue);
     std::cout << "Успешно обновлено!\n";
+    clearInputBuffer(); // Clear buffer after second cin >>
     break;
   }
   case 4: // Search
   {
+    clearInputBuffer(); // Clear buffer before getline operations
+
     std::cout << "Введите параметр поиска (";
     if (className == "Member_of_commision")
     {
@@ -181,6 +182,8 @@ template <typename T> bool Interface<T>::_processChoice(int choice)
   }
   case 5: // Sort and Display
   {
+    clearInputBuffer(); // Clear buffer before getline operations
+
     std::cout << "Выберите поле для сортировки (";
     if (className == "Member_of_commision")
     {
@@ -313,23 +316,19 @@ template <typename T> bool Interface<T>::_processChoice(int choice)
     }
     break;
   }
-  case 10: // Clear
+  case 10:
   {
     tree = BinTree<T>();
     std::cout << "Дерево очищено.\n";
     break;
   }
-  case 11: // Back to main menu
+  case 11:
   {
+    isRunning = false;
     std::cout << "Возврат в главное меню...\n";
-    return false; // Сигнал для выхода из цикла
-  }
-  default:
-  {
-    std::cout << "Неверный выбор. Пожалуйста, введите число от 1 до 11.\n";
     break;
   }
+  default:
+    std::cout << "Неверный выбор.\n";
   }
-
-  return true; // Сигнал для продолжения цикла
 }

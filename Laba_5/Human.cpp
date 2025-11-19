@@ -1,21 +1,15 @@
 #include "Human.h"
-
+#include "InputException.h"
 #include <iomanip>
-#include <iostream>
 
-Human::Human() : name("John"), surname("Doe"), birthday("Unknown") {}
-
+Human::Human()
+    : name("Неизвестно"), surname("Неизвестно"), birthday("01.01.1900")
+{
+}
 Human::Human(std::string name, std::string surname, std::string birthday)
     : name(name), surname(surname), birthday(birthday)
 {
 }
-
-Human::Human(const Human &other)
-    : name(other.name), surname(other.surname), birthday(other.birthday)
-{
-}
-
-Human::~Human() {}
 
 std::string Human::get(std::string param) const
 {
@@ -37,64 +31,48 @@ void Human::set(std::string param, std::string value)
   else if (param == "birthday")
     birthday = value;
 }
-
-Human &Human::operator=(const Human &other)
+void Human::printHeader(std::ostream &os) const
 {
-  if (this != &other)
-  {
-    name = other.name;
-    surname = other.surname;
-    birthday = other.birthday;
-  }
-  return *this;
+  os << std::left << std::setw(15) << "Фамилия" << std::setw(15) << "Имя"
+     << std::setw(15) << "Дата рожд.";
 }
 
-// Comparison operators
 bool Human::operator<(const Human &other) const
 {
-  // Compare by surname first, then by name
   if (surname != other.surname)
     return surname < other.surname;
   return name < other.name;
 }
 
-bool Human::operator>(const Human &other) const { return other < *this; }
-
 bool Human::operator==(const Human &other) const
 {
-  return name == other.name && surname == other.surname &&
+  return surname == other.surname && name == other.name &&
          birthday == other.birthday;
 }
 
-void Human::printHeader(std::ostream &os) const
+std::ostream &operator<<(std::ostream &os, const Human &h)
 {
-  os << std::left << std::setw(15) << "Name" << std::setw(15) << "Surname"
-     << std::setw(15) << "Birthday";
-}
-
-std::ostream &operator<<(std::ostream &os, const Human &s)
-{
-  os << std::left << std::setw(15) << s.name << std::setw(15) << s.surname
-     << std::setw(15) << s.birthday;
+  os << std::left << std::setw(15) << h.get("surname") << std::setw(15)
+     << h.get("name") << std::setw(15) << h.get("birthday");
   return os;
 }
 
+// РЕАЛИЗАЦИЯ operator>> с вызовом интерактивных гейткиперов
 std::istream &operator>>(std::istream &is, Human &h)
 {
-  std::string temp_name, temp_surname, temp_birthday;
-
-  if (!(is >> temp_surname >> temp_name >> temp_birthday))
-  {
-    return is;
-  }
-
-  InputException::checkNoSpecialCharsOrDigits_UTF8(temp_surname, "Фамилия");
-  InputException::checkNoSpecialCharsOrDigits_UTF8(temp_name, "Имя");
-  InputException::checkDateFormat(temp_birthday, "Дата_рождения");
+  // Примечание: Этот оператор игнорирует входящий поток 'is' и напрямую
+  // работает с std::cin/std::cout через InputException для интерактивного
+  // ввода. Это нетипичное использование, но соответствует требованию.
+  std::string temp_surname =
+      InputException::readAndValidateNameField("Введите фамилию: ");
+  std::string temp_name =
+      InputException::readAndValidateNameField("Введите имя: ");
+  std::string temp_birthday = InputException::readAndValidateDate(
+      "Введите дату рождения (ДД.ММ.ГГГГ): ");
 
   h.set("surname", temp_surname);
   h.set("name", temp_name);
   h.set("birthday", temp_birthday);
 
-  return is;
+  return is; // Возвращаем оригинальный поток для возможности цепочных вызовов
 }

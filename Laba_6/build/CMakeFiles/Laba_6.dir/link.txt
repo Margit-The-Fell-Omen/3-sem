@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Laba_6.dir/link.d CMakeFiles/Laba_6.dir/main.cpp.o CMakeFiles/Laba_6.dir/Human.cpp.o CMakeFiles/Laba_6.dir/Member_of_commision.cpp.o CMakeFiles/Laba_6.dir/Prepod_from_commision.cpp.o CMakeFiles/Laba_6.dir/Prepod.cpp.o CMakeFiles/Laba_6.dir/InputValidator.cpp.o -o Laba_6

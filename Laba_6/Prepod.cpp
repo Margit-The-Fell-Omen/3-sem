@@ -41,8 +41,8 @@ void Prepod::set(std::string param, std::string value)
 void Prepod::printHeader(std::ostream &os) const
 {
   Human::printHeader(os);
-  os << std::left << std::setw(15) << "Степень" << std::setw(15) << "Должность"
-     << std::setw(25) << "Работы";
+  os << std::left << std::setw(27) << "Степень" << std::setw(24) << "Должность"
+     << std::setw(30) << "Работы";
 }
 
 bool Prepod::operator<(const Prepod &other) const
@@ -84,10 +84,10 @@ std::istream &operator>>(std::istream &is, Prepod &p)
 {
   is >> static_cast<Human &>(p);
 
-  std::string temp_degree =
-      InputValidator::readAndValidateNameField("Введите ученую степень: ");
-  std::string temp_position =
-      InputValidator::readAndValidateNameField("Введите должность: ");
+  std::string temp_degree = InputValidator::readAndValidateNameField(
+      "Введите ученую степень: ", LanguageCheck::ONLY_LATIN);
+  std::string temp_position = InputValidator::readAndValidateNameField(
+      "Введите должность: ", LanguageCheck::ONLY_LATIN);
   std::string temp_works =
       InputValidator::readSingleWord("Введите работы (одно слово): ");
 

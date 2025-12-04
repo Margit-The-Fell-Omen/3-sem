@@ -1,12 +1,15 @@
 #pragma once
 #include "BinTree.h"
 #include "BinTreeException.h"
-#include "FileHandler.h"
+#include "FileHandler.h" // Предполагается, что FileException определен здесь или в Exception.h
 #include <algorithm>
 #include <iostream>
 #include <limits>
 #include <string>
 #include <vector>
+
+// Предварительное объявление FileException, если он в отдельном файле
+class FileException;
 
 template <typename T> class Interface
 {
@@ -14,12 +17,16 @@ private:
   BinTree<T> &tree;
   const std::string className;
   bool isRunning = true;
-  FileHandler<T> fileHandler{
-      "default.txt"}; // Add FileHandler with default filename
+  FileHandler<T> fileHandler{"default.txt"};
 
+  // Обработчики меню и выбора
   void _displayMenu() const;
   int _getUserChoice();
   void _processChoice(int choice);
+
+  // Приватные методы для поиска и сортировки
+  void _handleSearch();
+  void _handleSort();
 
 public:
   Interface(BinTree<T> &treeRef, const std::string &name);
@@ -45,9 +52,9 @@ template <typename T> void Interface<T>::_displayMenu() const
   std::cout << "8. Отобразить в порядке PostOrder\n";
   std::cout << "9. Отобразить в порядке LevelOrder\n";
   std::cout << "10. Очистить дерево\n";
-  std::cout << "11. Сохранить в файл\n";         // New option
-  std::cout << "12. Загрузить из файла\n";       // New option
-  std::cout << "13. Вернуться в главное меню\n"; // Changed from 11 to 13
+  std::cout << "11. Сохранить в файл\n";
+  std::cout << "12. Загрузить из файла\n";
+  std::cout << "13. Вернуться в главное меню\n";
   std::cout << "Введите ваш выбор: ";
 }
 
@@ -61,7 +68,6 @@ template <typename T> int Interface<T>::_getUserChoice()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     throw BinTreeException("Неверный выбор меню. Пожалуйста, введите число.");
   }
-  // std::cin.ignore здесь не нужен, т.к. интерактивный ввод теперь пословный
   return choice;
 }
 
@@ -75,298 +81,279 @@ template <typename T> void Interface<T>::run()
       int choice = _getUserChoice();
       _processChoice(choice);
     }
-    catch (const BinTreeException &e) // Ловим ТОЛЬКО ошибки контейнера
+    catch (const BinTreeException &e)
     {
       std::cerr << "\n[ОШИБКА ОПЕРАЦИИ]: " << e.what() << std::endl;
     }
-    catch (const FileException &e) // Catch file exceptions
+    catch (const FileException &e)
     {
       std::cerr << "\n[ОШИБКА ФАЙЛА]: " << e.what() << std::endl;
     }
   }
 }
 
+template <typename T> void Interface<T>::_handleSearch()
+{
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+  std::cout << "Введите параметр поиска (";
+  if (className == "Member_of_commision")
+  {
+    std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
+                 "commision_name/название_комиссии, biography/биография";
+  }
+  else if (className == "Prepod")
+  {
+    std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
+                 "degree/ученая_степень, position/должность, works/работы";
+  }
+  else if (className == "Prepod_from_commision")
+  {
+    std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
+                 "degree/ученая_степень, position/должность, works/работы, "
+                 "commision_name/название_комиссии, biography/биография, "
+                 "commision_works/работы_в_комиссии";
+  }
+  std::cout << "): ";
+
+  std::string searchParam;
+  std::getline(std::cin, searchParam);
+
+  std::cout << "Введите значение для поиска: ";
+  std::string searchValue;
+  std::getline(std::cin, searchValue);
+
+  std::vector<T> results;
+  auto it = tree.template begin<Order::InOrder>();
+  auto end_it = tree.template end<Order::InOrder>();
+  while (it != end_it)
+  {
+    if ((*it).get(searchParam) == searchValue)
+    {
+      results.push_back(*it);
+    }
+    ++it;
+  }
+
+  if (results.empty())
+  {
+    std::cout << "Совпадений не найдено.\n";
+  }
+  else
+  {
+    std::cout << "Найдено " << results.size() << " совпадение(ий):\n";
+    T dummy;
+    dummy.printHeader(std::cout);
+    std::cout << std::endl;
+    for (const auto &result : results)
+    {
+      std::cout << result << std::endl;
+    }
+  }
+}
+
+template <typename T> void Interface<T>::_handleSort()
+{
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+  std::cout << "Выберите поле для сортировки (";
+  if (className == "Member_of_commision")
+  {
+    std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
+                 "commision_name/название_комиссии, biography/биография";
+  }
+  else if (className == "Prepod")
+  {
+    std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
+                 "degree/ученая_степень, position/должность, works/работы";
+  }
+  else if (className == "Prepod_from_commision")
+  {
+    std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
+                 "degree/ученая_степень, position/должность, works/работы, "
+                 "commision_name/название_комиссии, biography/биография, "
+                 "commision_works/работы_в_комиссии";
+  }
+  std::cout << "): ";
+
+  std::string sortField;
+  std::getline(std::cin, sortField);
+
+  std::vector<T> elements;
+  auto it = tree.template begin<Order::InOrder>();
+  auto end_it = tree.template end<Order::InOrder>();
+  while (it != end_it)
+  {
+    elements.push_back(*it);
+    ++it;
+  }
+
+  std::sort(elements.begin(), elements.end(),
+            [&sortField](const T &a, const T &b)
+            {
+              if (sortField == "birthday" || sortField == "дата_рождения")
+              {
+                std::string dateA_str = a.get(sortField);
+                std::string dateB_str = b.get(sortField);
+                auto toComparable = [](const std::string &date)
+                {
+                  if (date.length() != 10)
+                    return std::string("");
+                  return date.substr(6, 4) + date.substr(3, 2) +
+                         date.substr(0, 2);
+                };
+                return toComparable(dateA_str) < toComparable(dateB_str);
+              }
+              else
+              {
+                return a.get(sortField) < b.get(sortField);
+              }
+            });
+
+  if (elements.empty())
+  {
+    std::cout << "Дерево пусто.\n";
+  }
+  else
+  {
+    std::cout << "Отсортировано по полю '" << sortField << "':\n";
+    T dummy;
+    dummy.printHeader(std::cout);
+    std::cout << std::endl;
+    for (const auto &element : elements)
+    {
+      std::cout << element << std::endl;
+    }
+  }
+}
+
 template <typename T> void Interface<T>::_processChoice(int choice)
 {
-  std::string searchParam, searchValue;
-
-  // Clear the input buffer before any getline operations
-  auto clearInputBuffer = []()
-  { std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); };
+  auto clearAfterObjectInput = []()
+  {
+    if (std::cin.peek() != '\n' && std::cin.peek() != EOF)
+    {
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+  };
 
   switch (choice)
   {
-  case 1: // Добавить
+  case 1:
   {
     std::cout << "\n--- Добавление нового элемента ---\n";
     T value;
     std::cin >> value;
     tree.insert(value);
     std::cout << "Успешно добавлено!\n";
-    clearInputBuffer();
+    clearAfterObjectInput();
     break;
   }
-  case 2: // Удалить
+  case 2:
   {
     std::cout << "\n--- Удаление элемента ---\n";
     T value;
     std::cin >> value;
     tree.remove(value);
     std::cout << "Успешно удалено!\n";
-    clearInputBuffer();
+    clearAfterObjectInput();
     break;
   }
-  case 3: // Обновить
+  case 3:
   {
     std::cout << "\n--- Обновление элемента ---\n";
     T oldValue, newValue;
     std::cout << "Введите СТАРЫЕ данные элемента для обновления:\n";
     std::cin >> oldValue;
-    clearInputBuffer();
-
+    clearAfterObjectInput();
     std::cout << "Введите НОВЫЕ данные для элемента:\n";
     std::cin >> newValue;
     tree.update(oldValue, newValue);
     std::cout << "Успешно обновлено!\n";
-    clearInputBuffer();
+    clearAfterObjectInput();
     break;
   }
-  case 4: // Search
+  case 4:
   {
-    clearInputBuffer();
-
-    std::cout << "Введите параметр поиска (";
-    if (className == "Member_of_commision")
+    _handleSearch();
+    break;
+  }
+  case 5:
+  {
+    _handleSort();
+    break;
+  }
+  case 6:
+  case 7:
+  case 8:
+  case 9:
+  {
+    T dummy;
+    auto display = [&](const std::string &orderName, auto begin_it, auto end_it)
     {
-      std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
-                   "commision_name/название_комиссии, biography/биография";
-    }
-    else if (className == "Prepod")
-    {
-      std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
-                   "degree/ученая_степень, position/должность, works/работы";
-    }
-    else if (className == "Prepod_from_commision")
-    {
-      std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
-                   "degree/ученая_степень, position/должность, works/работы, "
-                   "commision_name/название_комиссии, biography/биография, "
-                   "commision_works/работы_в_комиссии";
-    }
-    std::cout << "): ";
-    std::getline(std::cin, searchParam);
-
-    std::cout << "Введите значение для поиска: ";
-    std::getline(std::cin, searchValue);
-
-    std::vector<T> results;
-    auto it = tree.template begin<Order::InOrder>();
-    auto end = tree.template end<Order::InOrder>();
-    while (it != end)
-    {
-      if ((*it).get(searchParam) == searchValue)
+      std::cout << "Порядок " << orderName << ":\n";
+      if (!tree.getRoot())
       {
-        results.push_back(*it);
+        std::cout << "(Дерево пусто)\n";
+        return;
       }
-      ++it;
-    }
-
-    if (results.empty())
-    {
-      std::cout << "Совпадений не найдено.\n";
-    }
-    else
-    {
-      std::cout << "Найдено " << results.size() << " совпадение(ий):\n";
-      T dummy;
       dummy.printHeader(std::cout);
       std::cout << std::endl;
-      for (const auto &result : results)
+      while (begin_it != end_it)
       {
-        std::cout << result << std::endl;
+        std::cout << *begin_it << std::endl;
+        ++begin_it;
       }
-    }
+    };
+    if (choice == 6)
+      display("InOrder", tree.template begin<Order::InOrder>(),
+              tree.template end<Order::InOrder>());
+    if (choice == 7)
+      display("PreOrder", tree.template begin<Order::PreOrder>(),
+              tree.template end<Order::PreOrder>());
+    if (choice == 8)
+      display("PostOrder", tree.template begin<Order::PostOrder>(),
+              tree.template end<Order::PostOrder>());
+    if (choice == 9)
+      display("LevelOrder", tree.template begin<Order::LevelOrder>(),
+              tree.template end<Order::LevelOrder>());
     break;
   }
-  case 5: // Sort and Display
-  {
-    clearInputBuffer();
-
-    std::cout << "Выберите поле для сортировки (";
-    if (className == "Member_of_commision")
-    {
-      std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
-                   "commision_name/название_комиссии, biography/биография";
-    }
-    else if (className == "Prepod")
-    {
-      std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
-                   "degree/ученая_степень, position/должность, works/работы";
-    }
-    else if (className == "Prepod_from_commision")
-    {
-      std::cout << "name/имя, surname/фамилия, birthday/дата_рождения, "
-                   "degree/ученая_степень, position/должность, works/работы, "
-                   "commision_name/название_комиссии, biography/биография, "
-                   "commision_works/работы_в_комиссии";
-    }
-    std::cout << "): ";
-    std::string sortField;
-    std::getline(std::cin, sortField);
-
-    std::vector<T> elements;
-    auto it = tree.template begin<Order::InOrder>();
-    auto end = tree.template end<Order::InOrder>();
-    while (it != end)
-    {
-      elements.push_back(*it);
-      ++it;
-    }
-
-    std::sort(elements.begin(), elements.end(),
-              [&sortField](const T &a, const T &b)
-              { return a.get(sortField) < b.get(sortField); });
-
-    if (elements.empty())
-    {
-      std::cout << "Дерево пусто.\n";
-    }
-    else
-    {
-      std::cout << "Отсортировано по полю " << sortField << ":\n";
-      T dummy;
-      dummy.printHeader(std::cout);
-      std::cout << std::endl;
-      for (const auto &element : elements)
-      {
-        std::cout << element << std::endl;
-      }
-    }
-    break;
-  }
-  case 6: // InOrder traversal
-  {
-    std::cout << "Порядок InOrder:\n";
-    if (!tree.getRoot())
-    {
-      std::cout << "(Дерево пусто)" << std::endl;
-      break;
-    }
-    T dummy;
-    dummy.printHeader(std::cout);
-    std::cout << std::endl;
-    auto it = tree.template begin<Order::InOrder>();
-    auto end = tree.template end<Order::InOrder>();
-    while (it != end)
-    {
-      std::cout << *it << std::endl;
-      ++it;
-    }
-    break;
-  }
-  case 7: // PreOrder traversal
-  {
-    std::cout << "Порядок PreOrder:\n";
-    if (!tree.getRoot())
-    {
-      std::cout << "(Дерево пусто)" << std::endl;
-      break;
-    }
-    T dummy;
-    dummy.printHeader(std::cout);
-    std::cout << std::endl;
-    auto it = tree.template begin<Order::PreOrder>();
-    auto end = tree.template end<Order::PreOrder>();
-    while (it != end)
-    {
-      std::cout << *it << std::endl;
-      ++it;
-    }
-    break;
-  }
-  case 8: // PostOrder traversal
-  {
-    std::cout << "Порядок PostOrder:\n";
-    if (!tree.getRoot())
-    {
-      std::cout << "(Дерево пусто)" << std::endl;
-      break;
-    }
-    T dummy;
-    dummy.printHeader(std::cout);
-    std::cout << std::endl;
-    auto it = tree.template begin<Order::PostOrder>();
-    auto end = tree.template end<Order::PostOrder>();
-    while (it != end)
-    {
-      std::cout << *it << std::endl;
-      ++it;
-    }
-    break;
-  }
-  case 9: // LevelOrder traversal
-  {
-    std::cout << "Порядок LevelOrder:\n";
-    if (!tree.getRoot())
-    {
-      std::cout << "(Дерево пусто)" << std::endl;
-      break;
-    }
-    T dummy;
-    dummy.printHeader(std::cout);
-    std::cout << std::endl;
-    auto it = tree.template begin<Order::LevelOrder>();
-    auto end = tree.template end<Order::LevelOrder>();
-    while (it != end)
-    {
-      std::cout << *it << std::endl;
-      ++it;
-    }
-    break;
-  }
-  case 10: // Clear tree
+  case 10:
   {
     tree = BinTree<T>();
     std::cout << "Дерево очищено.\n";
     break;
   }
-  case 11: // Save to file
+  case 11:
   {
-    clearInputBuffer();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "Введите имя файла для сохранения (по умолчанию: "
               << fileHandler.getFilename() << "): ";
     std::string fname;
     std::getline(std::cin, fname);
-
     if (!fname.empty())
-    {
       fileHandler.setFilename(fname);
-    }
-
     fileHandler.writeToFile(tree);
     std::cout << "Дерево успешно сохранено в файл '"
               << fileHandler.getFilename() << "'\n";
     break;
   }
-  case 12: // Load from file
+  case 12:
   {
-    clearInputBuffer();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "Введите имя файла для загрузки (по умолчанию: "
               << fileHandler.getFilename() << "): ";
     std::string fname;
     std::getline(std::cin, fname);
-
     if (!fname.empty())
-    {
       fileHandler.setFilename(fname);
-    }
-
     fileHandler.readFromFile(tree);
     std::cout << "Дерево успешно загружено из файла '"
               << fileHandler.getFilename() << "'\n";
     break;
   }
-  case 13: // Return to main menu
+  case 13:
   {
     isRunning = false;
     std::cout << "Возврат в главное меню...\n";
@@ -374,6 +361,6 @@ template <typename T> void Interface<T>::_processChoice(int choice)
   }
   default:
     std::cout << "Неверный выбор.\n";
-    clearInputBuffer();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   }
 }

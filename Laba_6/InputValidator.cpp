@@ -3,35 +3,46 @@
 #include <iostream>
 #include <limits>
 
-void InputValidator::validateNoSpecialCharsOrDigitsUTF8(
-    const std::string &input)
+void InputValidator::_validateSingleLanguage(const std::string &input,
+                                             LanguageCheck langCheck)
 {
+  bool hasLatin = false;
+  bool hasCyrillic = false;
+
   for (size_t i = 0; i < input.length();)
   {
     unsigned char c = input[i];
     size_t char_len = 1;
 
     if ((c & 0x80) == 0)
-    {
+    { // ASCII символ
       char_len = 1;
-      if (!std::isalpha(c))
+      if (std::isalpha(c))
       {
+        hasLatin = true;
+      }
+      else if (!std::isspace(c))
+      { // Если это не буква и не пробел (т.е. цифра или символ)
         throw InputException("Недопустимый символ '" + std::string(1, c) +
-                             "' на позиции " + std::to_string(i) + ".");
+                             "' на позиции " + std::to_string(i) +
+                             ". Разрешены только буквы.");
       }
     }
     else if ((c & 0xE0) == 0xC0)
     {
       char_len = 2;
+      hasCyrillic = true;
     }
     else if ((c & 0xF0) == 0xE0)
     {
       char_len = 3;
-    }
+      hasCyrillic = true;
+    } // Кириллица здесь
     else if ((c & 0xF8) == 0xF0)
     {
       char_len = 4;
-    }
+      hasCyrillic = true;
+    } // Другие символы (тоже считаем "не латиницей")
     else
     {
       throw InputException("Некорректный байт на позиции " + std::to_string(i) +
@@ -44,8 +55,23 @@ void InputValidator::validateNoSpecialCharsOrDigitsUTF8(
     }
     i += char_len;
   }
-}
 
+  if (hasLatin && hasCyrillic)
+  {
+    throw InputException(
+        "Обнаружено смешение латинских и кириллических символов.");
+  }
+
+  if (langCheck == LanguageCheck::ONLY_CYRILLIC && hasLatin)
+  {
+    throw InputException("Разрешены только кириллические символы.");
+  }
+
+  if (langCheck == LanguageCheck::ONLY_LATIN && hasCyrillic)
+  {
+    throw InputException("Разрешены только латинские символы.");
+  }
+}
 int InputValidator::stringToInt(const std::string &s)
 {
   if (s.empty())
@@ -98,7 +124,8 @@ void InputValidator::validateDateFormat(const std::string &dateStr)
   }
 }
 
-std::string InputValidator::readAndValidateNameField(const std::string &prompt)
+std::string InputValidator::readAndValidateNameField(const std::string &prompt,
+                                                     LanguageCheck langCheck)
 {
   while (true)
   {
@@ -115,7 +142,7 @@ std::string InputValidator::readAndValidateNameField(const std::string &prompt)
         throw InputException("Ошибка потока ввода.");
       }
 
-      validateNoSpecialCharsOrDigitsUTF8(input);
+      _validateSingleLanguage(input, langCheck);
       return input;
     }
     catch (const InputException &e)

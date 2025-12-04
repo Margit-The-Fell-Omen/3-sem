@@ -33,8 +33,8 @@ void Human::set(std::string param, std::string value)
 }
 void Human::printHeader(std::ostream &os) const
 {
-  os << std::left << std::setw(15) << "Фамилия" << std::setw(15) << "Имя"
-     << std::setw(15) << "Дата рожд.";
+  os << std::left << std::setw(22) << "Фамилия" << std::setw(18) << "Имя"
+     << std::setw(23) << "Дата рожд.";
 }
 
 bool Human::operator<(const Human &other) const
@@ -60,10 +60,11 @@ std::ostream &operator<<(std::ostream &os, const Human &h)
 // РЕАЛИЗАЦИЯ operator>> с вызовом интерактивных гейткиперов
 std::istream &operator>>(std::istream &is, Human &h)
 {
-  std::string temp_surname =
-      InputValidator::readAndValidateNameField("Введите фамилию: ");
-  std::string temp_name =
-      InputValidator::readAndValidateNameField("Введите имя: ");
+
+  std::string temp_surname = InputValidator::readAndValidateNameField(
+      "Введите фамилию: ", LanguageCheck::ONLY_LATIN);
+  std::string temp_name = InputValidator::readAndValidateNameField(
+      "Введите имя: ", LanguageCheck::ONLY_LATIN);
   std::string temp_birthday = InputValidator::readAndValidateDate(
       "Введите дату рождения (ДД.ММ.ГГГГ): ");
 

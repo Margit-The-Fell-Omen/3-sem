@@ -103,8 +103,8 @@ std::istream &operator>>(std::istream &is, Member_of_commision &m)
 {
   is >> static_cast<Human &>(m);
 
-  std::string temp_commision =
-      InputValidator::readAndValidateNameField("Введите название комиссии: ");
+  std::string temp_commision = InputValidator::readAndValidateNameField(
+      "Введите название комиссии: ", LanguageCheck::ONLY_LATIN);
   std::string temp_bio =
       InputValidator::readSingleWord("Введите биографию (одно слово): ");
 

@@ -15,11 +15,8 @@ template <typename T> class FileHandler
 private:
   std::string filename;
 
-  // Helper method to read object from file without interactive prompts
   void readObjectFromFile(std::ifstream &file, T &obj) const
   {
-    // For file reading, we need a non-interactive way to read objects
-    // We'll read the data directly without using operator>>
     if constexpr (std::is_same_v<T, Human>)
     {
       std::string name, surname, birthday;
@@ -67,7 +64,6 @@ private:
     }
   }
 
-  // Helper method to write object to file
   void writeObjectToFile(std::ofstream &file, const T &obj) const
   {
     if constexpr (std::is_same_v<T, Human>)

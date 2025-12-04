@@ -120,18 +120,18 @@ std::istream &operator>>(std::istream &is, Prepod_from_commision &pfc)
 {
   is >> static_cast<Human &>(pfc);
 
-  std::string temp_degree =
-      InputValidator::readAndValidateNameField("Введите ученую степень: ");
-  std::string temp_position =
-      InputValidator::readAndValidateNameField("Введите должность: ");
+  std::string temp_degree = InputValidator::readAndValidateNameField(
+      "Введите ученую степень: ", LanguageCheck::ONLY_LATIN);
+  std::string temp_position = InputValidator::readAndValidateNameField(
+      "Введите должность: ", LanguageCheck::ONLY_LATIN);
   std::string temp_works =
       InputValidator::readSingleWord("Введите работы (одно слово): ");
   pfc.Prepod::set("degree", temp_degree);
   pfc.Prepod::set("position", temp_position);
   pfc.Prepod::set("works", temp_works);
 
-  std::string temp_commision =
-      InputValidator::readAndValidateNameField("Введите название комиссии: ");
+  std::string temp_commision = InputValidator::readAndValidateNameField(
+      "Введите название комиссии: ", LanguageCheck::ONLY_LATIN);
   std::string temp_bio =
       InputValidator::readSingleWord("Введите биографию (одно слово): ");
   pfc.Member_of_commision::set("commision_name", temp_commision);
